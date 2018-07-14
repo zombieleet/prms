@@ -1,9 +1,30 @@
 doctype html
 
-html
-  head
-    title Loading
-  body
-    div.fake-loading
-    div his
-    script(src="../js/FakeLoading.js")
+extends ./_template.jade
+
+block title
+  title Prison Mangement System
+
+block content
+  include ./_HeaderButton.jade
+  div.prison-functions
+    ul.prison-func
+      li.prison-func-item
+        p Add Prisoner
+      li.prison-func-item
+        p View Prisoner
+      li.prison-func-item
+        p Delete Prisoner
+      li.prison-func-item
+        p Add Warder
+      li.prison-func-item
+        p View Warder
+      li.prison-func-item
+        p Delete Warder
+      li.prison-func-item
+        p Add Visitor
+      li.prison-func-item
+        p View Visitor
+      li.prison-func-item
+        p Delete Visitor
+  script(src="../js/HeaderButton.js")
