@@ -5,7 +5,6 @@ const { enableLiveReload } = electronCompile;
 
 const appRoot = app.getAppPath();
 
-const jade = require("jade");
 const path = require("path");
 
 require("electron-reload")(appRoot, {
@@ -21,10 +20,11 @@ app.on("ready", () => {
     let win = new BrowserWindow({
         center: true,
         title: "Prison Management System",
+        backgroundColor: "#2e2c29",
         icon: nativeImage.createFromPath(`${appRoot}/src/main/images/logo.png`)
     });
-    
-    win.loadURL( "data:text/html," + encodeURIComponent(jade.renderFile(`${appRoot}/src/renderer/pug/index.jade`)));
+
+    win.loadURL(`file://${appRoot}/src/renderer/pug/loading.jade`);
 
     win.on("close", () => {
         win = undefined;
