@@ -1,0 +1,55 @@
+
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.fake-loading {
+    text-align: center;
+    height: 100%;
+    align-content: center;
+    align-items: center;
+
+    display: grid;
+   
+    color: $color-var;
+
+    .fake-load-id {
+        span {
+            position: relative;
+            color: black;
+            font-size: 50px;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: reverse;
+            &:not(:first-of-type) {
+                margin-left: 12px;
+            }
+        }
+        @for $i from 1 through 4 {
+            [data-load-id="#{$i}"] {
+                animation-name: data-load-anim-#{$i};
+                animation-duration: $i + s;
+                animation-delay: $i * 2 + s;
+            }
+        }
+    }
+}
+
+
+@for $i from 1 through 4 {
+    @keyframes data-load-anim-#{$i} {
+        from {
+            left: -20px;
+        }
+        to {
+            left: -50px;
+            opacity: 0;
+        }
+        /* @for $i from 0 through 100 { */
+        /*     #{$i}% { */
+        /*         left: -#{$i}px; */
+        /*     } */
+        /* } */
+    }
+}

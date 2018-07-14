@@ -1,0 +1,37 @@
+.header {
+    margin-top: 12px;
+    span {
+        margin-left: 20px;
+        width: 10%;
+        padding-top: 12px;
+        color: darken(white,77%);
+        cursor: pointer;
+        &.history {
+            i:last-of-type {
+                margin-left: 12px;
+            }
+        }
+        
+        &:fist-of-type {
+            float: left;
+        }
+        
+        &:last-of-type {
+            float: right;
+            margin-right: 20px;
+            text-align: right;
+            padding-top: 0;
+        }
+
+        i:hover {
+            color: lighten(white,55%);
+        }
+    }
+}
+
+[data-no-history=yes] {
+    cursor: not-allowed;
+    &:hover {
+        color: darken(white,77%) !important;
+    }
+}

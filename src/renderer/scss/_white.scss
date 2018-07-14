@@ -1,0 +1,8 @@
+body[data-color-mode=white] {
+    background-color: darken(white,5%);
+    .change-color {
+        i {
+            color: black;
+        }
+    }
+}
