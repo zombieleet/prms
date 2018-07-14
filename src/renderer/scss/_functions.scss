@@ -1,13 +1,16 @@
 
 .prison-functions {
     height: 790px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     ul {
         display: flex;
         flex-wrap: wrap;
-        margin-left: 15.5%;
-        margin-top: 15%;
-        width: 75%;
+        justify-content: center;
+        width: 520px;
         .prison-func-item {
             width: 150px;
             margin-left: 3%;
@@ -24,6 +27,11 @@
                 background: $color-var;
                 color: darken(white,20%);
             }
+        }
+        
+        &:not(:first-of-type) {
+            border-top: 2px solid $color-var;
+            margin-top: 0;
         }
     }
 }
