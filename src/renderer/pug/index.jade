@@ -8,23 +8,31 @@ block title
 block content
   include ./_HeaderButton.jade
   div.prison-functions
-    ul.prison-func
-      li.prison-func-item
+
+    ul(data-sect="prisoner" class="prison-func")
+
+      li(data-execute="addPrisoner" class="prison-func-item")
         p Add Prisoner
-      li.prison-func-item
+      li(data-execute="viewPrisoner" class="prison-func-item")
         p View Prisoner
-      li.prison-func-item
+      li(data-execute="deletePrisoner" class="prison-func-item")
         p Delete Prisoner
-      li.prison-func-item
+
+    ul(data-sect="warder", class="prison-func")
+
+      li(data-execute="addWarder" class="prison-func-item")
         p Add Warder
-      li.prison-func-item
+      li(class="prison-func-item")
         p View Warder
-      li.prison-func-item
+      li(class="prison-func-item")
         p Delete Warder
-      li.prison-func-item
+
+    ul(data-sect="visitor" class="prison-func")
+
+      li(class="prison-func-item")
         p Add Visitor
-      li.prison-func-item
+      li(class="prison-func-item")
         p View Visitor
-      li.prison-func-item
+      li(class="prison-func-item")
         p Delete Visitor
-  script(src="../js/HeaderButton.js")
+  script(src="../js/functions.js")
