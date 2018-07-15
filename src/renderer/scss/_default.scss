@@ -1,3 +1,21 @@
 body {
     font-family: $font-family;
 }
+
+::-webkit-scrollbar {
+    width: 7px;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+    background: $color-var;
+    
+}
+::-webkit-scrollbar-thumb {
+    background-color: $color-var;
+    border-radius: 50%;
+}
+
+::-webkit-scrollbar-button {
+    background-color: darken(#fff,60%);
+}
