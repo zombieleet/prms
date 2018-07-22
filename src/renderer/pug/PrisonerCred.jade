@@ -1,0 +1,86 @@
+doctype html
+
+html
+  head
+    link(rel="stylesheet" href="../libs/font-awesome.scss")
+    link(rel="stylesheet" href="../scss/main.scss")
+  body
+    form.info
+        div.picture
+          div.preview-picture
+            p click to take picture
+
+        div.name
+          label
+            span First Name
+            input(type="text" class="prisoner-firstname" data-db="firstName" required name="firstnmae")
+          label
+            span Last Name
+            input(type="text" class="prisoner-lastname" data-db="lastName" required name="lastname")
+
+        div.address
+          label
+            span Address
+            input(type="text" class="prisoner-address" data-db="address" required name="address")
+
+        div.dob
+          label
+            span Date of Birth
+            input(type="date" class="prisoner-dob" data-db="dob" required name="dob")
+  
+        div.location
+          label
+            span State
+            input(list="stateList")
+            datalist(id="stateList")
+              option(value="Edo")
+              option(value="Ekiti")
+          label
+            span L.G.A
+            input(list="lgalist")
+            datalist(id="lgalist")
+              option(value="etsako east")
+
+        div.body
+          label
+            span Skin Color
+            input(type="text" class="prisoner-color" data-db="skinColor" required name="skincolor")
+
+          label
+            span Height
+            input(type="number" step=".1" min="0" max="500" class="prisoner-height" data-db="height" required name="height")
+
+          label
+            span Weight
+            input(type="number" step=".1" min="0" max="500" class="prisoner-weight" data-db="weight" name="weight")
+
+
+        div.charged
+          label
+            span Years Charged
+            input(type="number" class="prisoner-charged-years" data-db="chargedYears" step=".1" max="1000" min="0" required name="yoc")
+          label
+            span Branch Name
+            input(type="text" class="prisoner-prison-name" data-db="prisonName" name="prisonname")
+
+        div.commit
+          label
+            span Crime Committed
+            input(type="text" class="prisoner-crime-committed" data-db="crimeCommitted" required name="crimecommitted")
+
+        div.family
+          label
+            span Marital Status
+            select(class="prisoner-marital-stauts" data-db="maritalStatus")
+              option(value="single") Single
+              option(value="married") Married
+          label
+            span Gender
+              select(class="prisoner-gender" data-db="gender")
+                option(value="male") Male
+                option(value="female") Female
+
+        div.button
+          button(type="submit" data-src-next="FamilyCred.jade" class="next-view") Next
+          button(type="cancel") Reset
+        script(src="../js/PrisonerCred.js")
