@@ -4,16 +4,17 @@
     const { remote: { app, dialog } } = require("electron");
     
     const prisoner = require("../js/Prisoner.js");
+    const { initWebViewListener } = require("../js/util.js");
     const prisonerPicture = document.querySelector(".prisoner-picture");
+    
+    const webview = document.querySelector("webview");
 
-
-    prisonerPicture.addEventListener("click", () => {
-        dialog.showOpenDialog({
-            defaultPath: app.getPath("pictures"),
-            property: [ "openFile" ],
-            filters: [ { name: "Image" , extensions: [ "jpg", "png", "jpeg"] } ]
-        });
+    webview.addEventListener("dom-ready", evt => {
+        initWebViewListener();
+        webview.openDevTools( { mode: "bottom" } );
     });
+    
+    webview.src=`file://${app.getAppPath()}/src/renderer/pug/PrisonerCred.jade`;
     
     document.addEventListener("DOMContentLoaded", async () => {
         
