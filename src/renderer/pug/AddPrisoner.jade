@@ -7,70 +7,7 @@ block title
   
 block content
   include ./_HeaderButton.jade
-  form.info
-    div.picture
-      div.preview-picture
-        input(type="file" class="prisoner-picture" data-db="picture" required)
-        p click to take picture
-        
-    div.name
-      label
-        span First Name
-        input(type="text" class="prisoner-firstname" data-db="firstName" required)
-      label
-        span Last Name
-        input(type="text" class="prisoner-lastname" data-db="lastName" required)
-        
-    div.address
-      label
-        span Address
-        input(type="text" class="prisoner-address" data-db="address" required)
-        
-    div.address
-      label
-        span Date of Birth
-        input(type="date" class="prisoner-dob" data-db="dob" required)
-    
-    div.body
-    
-      label
-        span Skin Color
-        input(type="text" class="prisoner-color" data-db="skinColor" required)
-        
-      label
-        span Height
-        input(type="number" step=".1" min="0" max="500" class="prisoner-height" data-db="height" required)
-        
-      label
-        span Weight
-        input(type="number" step=".1" min="0" max="500" class="prisoner-weight" data-db="weight")
-
-
-    div.charged
-      label
-        span Years Charged
-        input(type="number" class="prisoner-charged-years" data-db="chargedYears" step=".1" max="1000" min="0" required)
-        
-    div.commit
-      label
-        span Crime Committed
-        input(type="text" class="prisoner-crime-committed" data-db="crimeCommitted" required)
-    
-    div.family
-      label
-        span Marital Status
-        select(class="prisoner-marital-stauts" data-db="maritalStatus")
-          option(value="single") Single
-          option(value="married") Married
-      label
-        span Gender
-          select(class="prisoner-gender" data-db="gender")
-            option(value="male") Male
-            option(value="female") Female
-            
-    div.button
-      button(type="submit") Submit
-      button(type="cancel") Cancel
+  webview(id="prisoner-registration" nodeIntegration)
       
   div.cell-mates
   
