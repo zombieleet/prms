@@ -1,0 +1,118 @@
+
+form {
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    overflow-y: auto;
+    width: 70%;
+    color: $color-var;
+    > div {
+        margin-top: 30px;
+    }
+}
+
+.picture {
+    margin-top: 50px;
+    .preview-picture {
+        background: $color-var;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        .prisoner-picture {
+            display: none;
+        }
+        p {
+            font-size: 1.5em;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            opacity: .1;
+            cursor: pointer;
+            height: 100%;
+            &:hover {
+                color: lighten($color-var,20%);
+            }
+        }
+    }
+}
+
+
+input {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    border: none;
+
+    border-radius: 13px;
+    padding: 10px;
+}
+
+
+div.name {
+    label {
+        display: inline-block;
+        &:last-of-type {
+            margin-left: 30px;
+        }
+    }
+}
+
+div.family {
+    label {
+        display: inline-block;
+        select {
+            margin-left: 30px;
+            padding: 5px;
+            border: none;
+            border-radius: 12px;
+        }
+        &:last-of-type {
+            margin-left: 50px;
+        }
+    }
+}
+
+input[type="number"] {
+    width: 190px;
+}
+
+
+div.button {
+    margin-top: 70px;
+    padding-bottom: 20px;
+    button {
+        cursor: pointer;
+        border: none;
+        padding: 10px;
+        width: 100px;
+        border-radius: 15px;
+        margin-left: 30px;
+        &:hover {
+            background: lighten($color-var,20%);
+        }
+        &:first-of-type {
+            margin-left: initial;
+        }
+    }
+}
+
+.fam-info {
+    margin-top: 15px;
+    padding-top: 15px;
+    padding-left: 15px;
+    p {
+        margin-bottom: 13px;
+        text-decoration: underline;
+    }
+    &:first-of-type {
+        border-bottom: 2px solid $color-var;
+    }
+    &:hover {
+        background: $color-var;
+        box-shadow: 0 0 7px 1px #333333;
+        color: black;
+    }
+}
