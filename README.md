@@ -5,7 +5,7 @@
 
 `git clone https://github.com/zombieleet/prms.git`
 
-`cd prms.git`
+`cd prms`
 
 `npm install`
 
