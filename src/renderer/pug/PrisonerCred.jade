@@ -7,8 +7,14 @@ html
   body
     form.info
         div.picture
-          div.preview-picture
-            p click to take picture
+          canvas(class="draw-picture" width="199" height="148" hidden)
+          button(type="submit" class="picture-capture" disabled) Capture
+          span.preview-picture.preview-front
+            p Front View
+          span.preview-picture.preview-right
+            p Right View
+          span.preview-picture.preview-left
+            p Left View
 
         div.name
           label
