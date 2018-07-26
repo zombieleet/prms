@@ -6,7 +6,8 @@
     const prisoner = require("../js/Prisoner.js");
     const { initWebViewListener } = require("../js/util.js");
     const prisonerPicture = document.querySelector(".prisoner-picture");
-    
+
+    const emitter = new(require("events").EventEmitter)();
     const webview = document.querySelector("webview");
 
     webview.addEventListener("dom-ready", evt => {
@@ -18,20 +19,39 @@
     
     document.addEventListener("DOMContentLoaded", async () => {
         
+        const button = document.createElement("button");
+        
+        button.type = "submit";
+        button.textContent = "Generate";
+        button.setAttribute("class", "generate-room-number");
+        
+        button.addEventListener("click", () => {
+            const crimeComitted = document.querySelector(".prisoner-crime-committed").value;
+            emitter.emit("get-cell-mate", button, crimeComitted !== "" ? crimeComitted : undefined);
+        });
+
+        emitter.emit("get-cell-mate", button);
+    });
+
+    emitter.on("get-cell-mate", async (button, crime) => {
+        
         const cellMateEl = document.querySelector(".cell-mates");
-        const cellMates = await prisoner.getCellMate();
-
-
-        if ( cellMates.length === 0 ) {
+        
+        const { inMate , cellNumber } = await prisoner.getCellMate(crime);
+        
+        if ( inMate.length === 0 ) {
             const p = document.createElement("p");
             p.setAttribute("class", "no-cell-mate");
-            p.textContent = "No one has been assigned to this prison room";
+            p.textContent = `No one has been assigned to prison room number ${cellNumber}`;
             cellMateEl.appendChild(p);
+            cellMateEl.appendChild(button);
+            return ;
         }
         
         const ul = document.createElement("ul");
-
-        cellMates.forEach ( mate => {
+        
+        
+        inMate.forEach ( mate => {
             
             const li = document.createElement("li");
             const p = document.createElement("p");
@@ -53,6 +73,7 @@
         });
 
         cellMateEl.appendChild(ul);
+        cellMateEl.appendChild(button);
     });
     
 })();
