@@ -7,7 +7,7 @@ block title
   
 block content
   include ./_HeaderButton.jade
-  webview(id="prisoner-registration" nodeIntegration)
+  webview(id="prisoner-registration" webPreferences="nodeIntegrationInWorker" nodeIntegration)
       
   div.cell-mates
   
