@@ -2,12 +2,15 @@
 @import "variables.scss";
 @import "reset.scss";
 @import "extends.scss";
+@import "mixins.scss";
 @import "default.scss";
 @import "loading.scss";
 @import "functions.scss";
 @import "HeaderButton.scss";
 
 @import "AddPrisoner.scss";
+@import "ViewPrisoner.scss";
+
 @import "white.scss";
 
 @import "webview.scss";
