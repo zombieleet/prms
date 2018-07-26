@@ -77,14 +77,16 @@ html
         div.family
           label
             span Marital Status
-            select(class="prisoner-marital-stauts" data-db="maritalStatus")
-              option(value="single") Single
-              option(value="married") Married
+            input(list="maritalStatus" class="prisoner-marital-stauts" data-db="maritalStatus")
+            datalist(id="maritalStatus")
+              option(value="single")
+              option(value="married")
           label
             span Gender
-              select(class="prisoner-gender" data-db="gender")
-                option(value="male") Male
-                option(value="female") Female
+              input(list="gender" class="prisoner-gender" data-db="gender")
+              datalist(id="gender")
+                option(value="male")
+                option(value="female")
 
         div.button
           button(type="submit" data-src-next="FamilyCred.jade" class="next-view") Next
