@@ -8,18 +8,21 @@ html
     form.info
         div.picture
           canvas(class="draw-picture" width="199" height="148" hidden)
+          input(type="text" data-db="frontView" class="hide" data-type="front" required data-data-type="picture" name="fview")
+          input(type="text" data-db="rightView" class="hide" data-type="right" required data-data-type="picture" name="rview")
+          input(type="text" data-db="leftView" class="hide" data-type="left" required data-data-type="picture" name="lview")
           button(type="submit" class="picture-capture" disabled) Capture
-          span.preview-picture.preview-front
+          span(class="preview-picture preview-front" data-direction="front")
             p Front View
-          span.preview-picture.preview-right
+          span(class="preview-picture preview-right" data-direction="right")
             p Right View
-          span.preview-picture.preview-left
+          span(class="preview-picture preview-left" data-direction="left")
             p Left View
 
         div.name
           label
             span First Name
-            input(type="text" class="prisoner-firstname" data-db="firstName" required name="firstnmae")
+            input(type="text" class="prisoner-firstname" data-db="firstName" required name="firstname")
           label
             span Last Name
             input(type="text" class="prisoner-lastname" data-db="lastName" required name="lastname")
@@ -37,15 +40,12 @@ html
         div.location
           label
             span State
-            input(list="stateList")
+            input(list="stateList" data-db="state")
             datalist(id="stateList")
-              option(value="Edo")
-              option(value="Ekiti")
           label
             span L.G.A
-            input(list="lgalist")
+            input(list="lgalist" data-db="lga")
             datalist(id="lgalist")
-              option(value="etsako east")
 
         div.body
           label
@@ -54,17 +54,17 @@ html
 
           label
             span Height
-            input(type="number" step=".1" min="0" max="500" class="prisoner-height" data-db="height" required name="height")
+            input(type="number" step=".1" min="0" max="500" class="prisoner-height" data-db="height" required name="height" data-data-type="float")
 
           label
             span Weight
-            input(type="number" step=".1" min="0" max="500" class="prisoner-weight" data-db="weight" name="weight")
+            input(type="number" step=".1" min="0" max="500" class="prisoner-weight" data-db="weight" name="weight" data-data-type="float")
 
 
         div.charged
           label
             span Years Charged
-            input(type="number" class="prisoner-charged-years" data-db="chargedYears" step=".1" max="1000" min="0" required name="yoc")
+            input(type="number" class="prisoner-charged-years" data-db="chargedYears" step=".1" max="1000" min="0" required name="yoc" data-data-type="float")
           label
             span Branch Name
             input(type="text" class="prisoner-prison-name" data-db="prisonName" name="prisonname")
@@ -87,6 +87,14 @@ html
               datalist(id="gender")
                 option(value="male")
                 option(value="female")
+                
+        div.danger
+          label
+            span Lethal Level
+            input(list="lethalLevel" class="prisoner-lethal" data-db="lethal")
+            datalist(id="lethalLevel")
+              option(value="nonlethal")
+              option(value="lethal")
 
         div.button
           button(type="submit" data-src-next="FamilyCred.jade" class="next-view") Next
