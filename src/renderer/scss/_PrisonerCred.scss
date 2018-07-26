@@ -1,11 +1,11 @@
 
 form {
-    padding: 100px;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     height: 700px;
     overflow-y: auto;
-    width: 70%;
+    width: 86%;
     color: $color-var;
     > div {
         margin-top: 30px;
@@ -13,27 +13,29 @@ form {
 }
 
 .picture {
+    
     margin-top: 50px;
+    margin-bottom: 30px;
+    
     .preview-picture {
         background: $color-var;
-        width: 200px;
-        height: 200px;
-        display: flex;
+        width: 199px;
+        height: 148px;
+        display: inline-block;
         justify-content: center;
-        .prisoner-picture {
-            display: none;
-        }
+        margin: 1px auto auto 1px;
+        vertical-align: top;
         p {
             font-size: 1.5em;
             text-align: center;
             display: flex;
+            justify-content: center;
             align-items: center;
             opacity: .1;
             cursor: pointer;
             height: 100%;
-            &:hover {
-                color: lighten($color-var,20%);
-            }
+            
+            color: darken($color-var,40%);
         }
     }
 }
@@ -84,15 +86,7 @@ div.button {
     margin-top: 70px;
     padding-bottom: 20px;
     button {
-        cursor: pointer;
-        border: none;
-        padding: 10px;
-        width: 100px;
-        border-radius: 15px;
-        margin-left: 30px;
-        &:hover {
-            background: lighten($color-var,20%);
-        }
+        @extend %button;
         &:first-of-type {
             margin-left: initial;
         }
@@ -115,4 +109,22 @@ div.button {
         box-shadow: 0 0 7px 1px #333333;
         color: black;
     }
+}
+
+.picture-video {
+    position: relative;
+    width: 198px;
+    height: inherit;
+}
+
+.picture-capture {
+    @extend %button;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.hide {
+    display: none !important;
 }
