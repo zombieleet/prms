@@ -12,19 +12,19 @@
     const isHistory = el => el.getAttribute("data-no-history");
 
     document.addEventListener("DOMContentLoaded", () => {
-        
+
         const { webContents } = getCurrentWindow();
 
         if ( ! webContents.canGoBack() )
             goBack.setAttribute("data-no-history", "yes");
         else
             goBack.setAttribute("data-no-history", "no");
-        
+
         if ( ! webContents.canGoForward() )
             goFront.setAttribute("data-no-history", "yes");
         else
             goFront.setAttribute("data-no-history","no");
-        
+
     });
 
     changeColor.addEventListener("click", () => {
@@ -34,15 +34,15 @@
             document.body.setAttribute("data-color-mode", "white");
             return localStorage.setItem("color-mode", "white");
         }
-        
+
         document.body.removeAttribute("data-color-mode");
 
         changeColor.classList.remove("fa-toggle-off");
         changeColor.classList.add("fa-toggle-on");
-        
+
         return localStorage.setItem("color-mode","dark");
     });
-    
+
     goBack.addEventListener("click", () => isHistory(goBack) === "no" ? webContents.goBack() : "" );
     goFront.addEventListener("click", () => isHistory(goFront) === "no" ? webContents.goForward() : "");
 

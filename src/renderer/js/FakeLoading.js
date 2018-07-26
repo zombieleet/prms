@@ -4,10 +4,10 @@
 
     const { remote: { getCurrentWindow, app } } = require("electron");
     const emitStopInterval = new(require("events"));
-    
+
     document.addEventListener("DOMContentLoaded", () => {
         const title = document.querySelector("title");
-        
+
         const dotOne = setInterval( () => {
             if ( title.textContent === "Loading" ) {
                 title.textContent = "Loading.";
@@ -38,13 +38,13 @@
             clearInterval(dotTwo);
             clearInterval(dotThree);
             clearInterval(dotFour);
-            
+
             const { webContents } = getCurrentWindow();
             webContents.clearHistory();
             webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/index.jade`);
         });
 
-        
+
     });
 
     setTimeout( () => {
