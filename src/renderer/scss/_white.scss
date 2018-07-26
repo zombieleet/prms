@@ -1,4 +1,5 @@
 body[data-color-mode=white] {
+    transition: .2s ease-in;
     background-color: darken(white,5%);
     .change-color {
         i {
@@ -7,6 +8,19 @@ body[data-color-mode=white] {
     }
 
     input {
+        transition: .5s ease-in;
         border: 1px solid black;
+    }
+
+    .prisoners {
+        transition: .5s ease-in;
+        background: white;
+    }
+
+    .prisoner-section-list {
+        transition: .5s ease-in;
+        background: white !important;
+        border: 1px solid black;
+        border-radius: 5px;
     }
 }
