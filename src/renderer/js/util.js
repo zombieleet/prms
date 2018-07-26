@@ -20,17 +20,42 @@ module.exports.navigateWebView = evt => {
         });
         return ;
     }
+
+    if ( ! form.classList.contains("family-info") ) {
+
+        const inputs = form.querySelectorAll("input");
+        const storage = {};
+        
+        processPairs(form, (key,value) => {
+            storage[key] = value;
+        });
+        
+        localStorage.setItem("PRISONER_STORAGE", JSON.stringify(storage));
+    }
     
     ipc.sendToHost("webview-navigate-src", target.hasAttribute("data-src-next") ? "next" : "prev" , view);
 };
+
+const processPairs = (form,cb) => {
+    const inputs = form.querySelectorAll("input");
+    Array.from(inputs, input => {
+        const dataDbKey = input.getAttribute("data-db");
+        const dataDbValue = input.value;
+        cb(dataDbKey, dataDbValue);
+    });
+};
+
+module.exports.processPairs = processPairs;
 
 module.exports.initWebViewListener = () => {
     const webview = document.querySelector("webview");
     if ( ! webview )
         return;
+    
     webview.addEventListener("ipc-message", event => {
+        
         const { channel } = event;
-        console.log(event);
+
         if ( channel === "webview-navigate-src" ) {
             const { args: [ moveTo, view ] } = event;
             if ( moveTo === "next" ) {
