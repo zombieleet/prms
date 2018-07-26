@@ -2,9 +2,9 @@
 
 
     const { remote: { app, dialog } } = require("electron");
-    
+
     const prisoner = require("../js/Prisoner.js");
-    const { initWebViewListener } = require("../js/util.js");
+    const { initWebViewListener, initStates } = require("../js/util.js");
     const prisonerPicture = document.querySelector(".prisoner-picture");
 
     const emitter = new(require("events").EventEmitter)();
@@ -14,30 +14,35 @@
         initWebViewListener();
         webview.openDevTools( { mode: "bottom" } );
     });
-    
+
     webview.src=`file://${app.getAppPath()}/src/renderer/pug/PrisonerCred.jade`;
-    
+
     document.addEventListener("DOMContentLoaded", async () => {
-        
+
         const button = document.createElement("button");
-        
+
         button.type = "submit";
         button.textContent = "Generate";
         button.setAttribute("class", "generate-room-number");
-        
+
         button.addEventListener("click", () => {
-            const crimeComitted = document.querySelector(".prisoner-crime-committed").value;
-            emitter.emit("get-cell-mate", button, crimeComitted !== "" ? crimeComitted : undefined);
+            emitter.emit("get-cell-mate", button);
         });
 
         emitter.emit("get-cell-mate", button);
     });
 
-    emitter.on("get-cell-mate", async (button, crime) => {
-        
+    emitter.on("get-cell-mate", async (button) => {
+
         const cellMateEl = document.querySelector(".cell-mates");
+
+        const { inMate , cellNumber } = await prisoner.getCellMate();
         
-        const { inMate , cellNumber } = await prisoner.getCellMate(crime);
+        if ( cellMateEl.childElementCount >= 1 ) {
+            Array.from(cellMateEl.children, el => el.remove());
+        }
+
+        localStorage.setItem("CELL_NUMBER", cellNumber);
         
         if ( inMate.length === 0 ) {
             const p = document.createElement("p");
@@ -47,12 +52,12 @@
             cellMateEl.appendChild(button);
             return ;
         }
-        
+
         const ul = document.createElement("ul");
-        
-        
+
+
         inMate.forEach ( mate => {
-            
+
             const li = document.createElement("li");
             const p = document.createElement("p");
 
@@ -62,18 +67,18 @@
             p.textContent = mate.prisonerId;
 
             li.setAttribute("class", "new-cell-mates");
-            
+
             imgContainer.appendChild(img);
-            
+
             li.appendChild(imgContainer);
             li.appendChild(p);
 
             ul.appendChild(li);
-            
+
         });
 
         cellMateEl.appendChild(ul);
         cellMateEl.appendChild(button);
     });
-    
+
 })();
