@@ -76,17 +76,48 @@ module.exports.initWebViewListener = () => {
     });
 };
 
+const isDataListItem = (target) => {
+    if ( ! HTMLInputElement[Symbol.hasInstance](target) )
+        return false;
+    if ( ! HTMLDataListElement[Symbol.hasInstance](target.nextElementSibling) )
+        return false;
+    return true;
+};
+
 module.exports.preventDataListDefault = () => {
     
     const form = document.forms[0];
     
     form.addEventListener("click", evt => {
         const { target } = evt;
-        if ( ! HTMLInputElement[Symbol.hasInstance](target) )
-            return ;
-        if ( ! HTMLDataListElement[Symbol.hasInstance](target.nextElementSibling) )
-            return ;
-        target.value = "";
+        if ( isDataListItem(target) )
+            target.value = "";
     });
+
+    const inputLists = form.querySelectorAll("input[list]");
+    const dataListOptions = Array.prototype.slice.call(inputLists);
     
+    dataListOptions.forEach(el => {
+        
+        el.addEventListener("blur", evt => {
+            
+            const { target } = evt;
+            
+            const dataList = Array.prototype.slice.call(target.nextElementSibling.querySelectorAll("option"));
+
+            let isMatch = false;
+
+            for ( let option of dataList ) {
+                if ( option.value === target.value ) {
+                    isMatch = true;
+                    break;
+                }
+            }
+            
+            if ( isMatch )
+                return ;
+            
+            target.value = "";
+        });
+    });
 };
