@@ -1,25 +1,106 @@
 ; ( () => {
     
-    const { remote: { app, dialog } } = require("electron");
-    const prisonerPicture = document.querySelector(".preview-picture p");
+    const { remote: { app, dialog, Menu, MenuItem, getCurrentWindow } } = require("electron");
+    const picture = document.querySelector(".picture");
     const nView = document.querySelector(".next-view");
-
+    const capture = document.querySelector(".picture-capture");
     const form = document.forms[0];
-    
+    const emitter = new(require("events").EventEmitter)();
     const util = require("../js/util.js");
+
     
-    prisonerPicture.addEventListener("click", evt => {
-        evt.preventDefault();
-        dialog.showOpenDialog({
-            defaultPath: app.getPath("pictures"),
-            property: [ "openFile" ],
-            filters: [ { name: "Image" , extensions: [ "jpg", "png", "jpeg"] } ]
-        }, path => {
-            console.log(path || "no path");
-        });
+    const takePicture = evt => {
+        
+        const video = evt.target.parentNode.querySelector("video:not(.hide)");
+        
+        if ( ! video )
+            return ;
+        
+        const canvas = document.querySelector("canvas");
+        const context = canvas.getContext("2d");
+        const img = new Image();
+        
+        context.drawImage(video, 0, 0, 199, 148);
+        
+        img.src = canvas.toDataURL("image/png");
+
+        video.classList.add("hide");
+        video.parentNode.appendChild(img);
+    };
+
+    const videoMenu = (evt) => {
+        const menu = new Menu();
+        return (() => {
+            menu.append(new MenuItem({
+                label: "capture",
+                accelerator: "cmd+c",
+                click() {
+                }
+            }));
+            menu.popup(getCurrentWindow(), { async: true });
+        })();
+    };
+    
+    picture.addEventListener("click", evt => {
+        
+        const { target } = evt;
+
+        if ( ! HTMLParagraphElement[Symbol.hasInstance](target) )
+            return ;
+        
+        const pictureViews = Array.from(picture.children);
+        const view = target.parentNode;
+
+        for ( let pics of pictureViews ) {
+            
+            const viewVideo = pics.querySelector("video");
+            const viewCapture = pics.querySelector("button");
+            const viewP = pics.querySelector("p");
+            
+            if ( viewVideo && ! viewVideo.classList.contains("hide") ) {
+                viewP.classList.remove("hide");
+                viewVideo.remove();
+                break;
+            }
+            
+        }
+        
+        const video = document.createElement("video");
+        
+        target.classList.add("hide");
+        
+        video.setAttribute("class", "picture-video");
+        view.appendChild(video);
+
+        capture.disabled = false;
+
+        emitter.emit("start-taking-picture", video);
+
+        video.addEventListener("loadedmetadata", () => video.play());
+        video.addEventListener("contextmenu", videoMenu );
     });
 
+    emitter.on("start-taking-picture", async (video) => {
+        
+        let stream ;
+        
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        } catch(ex) {
+            stream = ex;
+        }
+
+        if ( Error[Symbol.hasInstance](stream) ) {
+            dialog.showErrorBox("Error Taking Picture", "Contact the Developer, if this box happens to show up");
+            return ;
+        }
+
+        video.srcObject = stream;
+        
+    });
+    
     nView.addEventListener("click", util.navigateWebView );
+    capture.addEventListener("click", takePicture);
     
     util.preventDataListDefault();
 })();
