@@ -27,7 +27,7 @@ html
           div.nature-of-relation
             label
               span Nature of Relationship
-              input(required list="natureList")
+              input(required list="natureList" data-db="relationship")
               datalist(id="natureList")
                 option(value="Father")
                 option(value="Mother")
@@ -41,7 +41,7 @@ html
       div.button
         button(type="submit" data-src-prev="PrisonerCred.jade" class="prev-view") Back
         button(type="cancel") Reset
-        button(type="sumbit") Save
+        button(type="sumbit" class="save") Save
 
 
     script(src="../js/FamilyCred.js")
