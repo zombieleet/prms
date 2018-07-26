@@ -4,31 +4,9 @@ const { remote: { app, dialog }  } = require("electron");
 
 const DataStore = require("nedb");
 
-            
-const cellCollection = new(require("nedb"))({
-    filename: path.join(app.getPath("userData"), "cell.db"),
-    autoload: true
-});
-
-cellCollection.count({}, ( err, count ) => {
-    if ( err ) {
-        dialog.showErrorBox("unexpected error", "cannot initiaize database");
-        return ;
-    }
-    if ( count !== 0 )
-        return ;
-    for ( let i = 0; i < 300 ; i++ ) {
-        cellCollection.insert( { cellNumber: i, filledUp: false, maxCellMate: 4 } , ( err, doc ) => {
-            if ( err ) {
-                dialog.showErrorBox("unexpected error", "cannot initiaize database");
-                return ;
-            }
-        });
-    }
-});
-
 
 module.exports = class DB {
+    
     constructor(collection) {
         
         this.db = new DataStore({
@@ -36,7 +14,7 @@ module.exports = class DB {
         });
         
         this.DataStore = DataStore;
-        this.err = err => err ? dialog.showErrorBox("unexpected error", "cannot load database") : "";
+        this.err = err => err ? dialog.showErrorBox("unexpected error", "cannot load database " + err): "";
         
         this.db.loadDatabase( this.err );
     }
@@ -80,5 +58,4 @@ module.exports = class DB {
             });
         });
     }
-}
-
+};
