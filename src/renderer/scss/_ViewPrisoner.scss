@@ -1,0 +1,93 @@
+
+.prisoners {
+    
+    background: darken($color-var,30%);
+    
+    position: relative;
+    top: 50px;
+    float: left;
+    padding: 12px;
+    width: 20%;
+    height: 100%;
+    
+    color: $color-var;
+
+    input {
+        width: 100%;
+    }
+
+    .prisoners-section {
+        padding: 12px;
+        padding-top: initial;
+        .prisoner-section-list {
+            margin-top: 30px;
+            background: $color-var;
+            padding: 12px;
+            cursor: pointer;
+            width: 85%;
+            &:hover {
+                background: darken($color-var, 20%);
+                [data-type] {
+                    color: $color-var;
+                }
+            }
+        }
+    }
+    
+}
+
+.prisoner-list {
+    float: right;
+    margin-top: 50px;
+    margin-right: 20px;
+    padding: 12px;
+    //border: 1px solid red;
+    height: 100%;
+    width: 70%;
+}
+
+.active {
+    @include activeMixin;
+}
+
+[data-not-available] {
+    color: $color-var;
+    text-align: center;
+    
+    font-size: 1.5em;
+}
+
+.prisoner-list-item {
+    overflow-y: scroll;
+    height: 100%;
+    padding-right: 25px;
+}
+
+.prisoner-item {
+
+    border: 1px solid darken($color-var, 20%);
+    padding: 20px;
+
+    margin-top: 20px;
+}
+
+.prisoner-view-full {
+    cursor: pointer;
+    display: block;
+    margin-top: 12px;
+    &:hover {
+        text-decoration: underline;
+        color: $color-var;
+    }
+}
+
+.prisoner-delete {
+    @extend %button;
+    float: right;
+    margin-top: -12px;
+    padding: 5px;
+    width: 50px;
+    border-radius: 5px;
+    background: darken(red,30%);
+    color: white;
+}
