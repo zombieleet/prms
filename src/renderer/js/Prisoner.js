@@ -21,15 +21,17 @@ module.exports = new(class Prisoner extends DB {
     constructor(collection) {
         super(collection);
     }
+    
     addPrisoner() {
         webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/AddPrisoner.jade`);
     }
-    getCellMate(crimeCommitted = undefined) {
+    
+    getCellMate() {
 
         const cellMate = new this.DataStore({
-            filename: path.join(app.getPath("userData"), "cell")
+            filename: path.join(app.getPath("userData"), "cell.db")
         });
-
+        
         cellMate.loadDatabase( this.err );
 
         return new Promise( ( resolve, reject ) => {
@@ -41,7 +43,7 @@ module.exports = new(class Prisoner extends DB {
                     return ;
                 }
 
-                this.db.find( { cellNumber , crimeCommitted: { $nin: crimeCommitted } } , ( err , doc ) => {
+                this.db.find( { cellNumber } , ( err , doc ) => {
                     if ( err )
                         return reject(err);
 
@@ -51,6 +53,7 @@ module.exports = new(class Prisoner extends DB {
         });
 
     }
+    
     async save(data) {
         let result;
         try {
@@ -61,7 +64,23 @@ module.exports = new(class Prisoner extends DB {
         if ( Error[Symbol.hasInstance](result) ) {
             return false;
         }
-        return true;
+        return this;
+    }
+    
+    async __viewPrisoner(query = {}) {
+        let result ;
+        try {
+            result = await this.view(query);
+        } catch(ex) {
+            result = ex;
+        }
+        if ( Error[Symbol.hasInstance](result) )
+            return false;
+        return result;
+    }
+    
+    viewPrisoner() {
+        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/ViewPrisoner.jade`);
     }
 
-})("prisoner");
+})("prisoner.db");
