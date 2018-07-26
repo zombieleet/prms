@@ -1,0 +1,36 @@
+doctype html
+
+extends ./_template.jade
+
+block title
+  title View Prisoner
+
+block content
+  include ./_HeaderButton.jade
+  
+  div.prisoners
+    label
+      span search by prison number
+      input(type="number" min="1" max="300")
+    hr
+    ul.prisoners-section
+      li.prisoner-section-list.active
+        a(data-type="{}") All
+      li.prisoner-section-list
+        a(data-type="transfered") Transfered
+      li.prisoner-section-list
+        a(data-type="misconvicted") Mis-Convicted
+      li.prisoner-section-list
+        a(data-type="discharged") Discharged
+      li.prisoner-section-list
+        a(data-type="male") Male
+      li.prisoner-section-list
+        a(data-type="inview") In View
+      li.prisoner-section-list
+        a(data-type="lethal") Lethal
+      li.prisoner-section-list
+        a(data-type="nonlethal") Non Lethal
+      
+  div(class="prisoner-list")
+  
+  script(src="../js/ViewPrisoner.js")
