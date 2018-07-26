@@ -4,10 +4,12 @@
     const picture = document.querySelector(".picture");
     const nView = document.querySelector(".next-view");
     const capture = document.querySelector(".picture-capture");
+    //const lga = document.querySelector("[list=lgalist]");
+    const stateInput = document.querySelector("[list=stateList]");
     const form = document.forms[0];
     const emitter = new(require("events").EventEmitter)();
     const util = require("../js/util.js");
-
+    
     
     const takePicture = evt => {
         
@@ -15,14 +17,15 @@
         
         if ( ! video )
             return ;
-        
+
+        const captureDirection = document.querySelector(`[data-type=${video.parentNode.getAttribute("data-direction")}]`);
         const canvas = document.querySelector("canvas");
         const context = canvas.getContext("2d");
         const img = new Image();
-        
+        console.log(video.parentNode.getAttribute("data-direction"));
         context.drawImage(video, 0, 0, 199, 148);
         
-        img.src = canvas.toDataURL("image/png");
+        captureDirection.value = img.src = canvas.toDataURL("image/png");
 
         video.classList.add("hide");
         video.parentNode.appendChild(img);
@@ -101,6 +104,30 @@
     
     nView.addEventListener("click", util.navigateWebView );
     capture.addEventListener("click", takePicture);
-    
     util.preventDataListDefault();
+
+
+    stateInput.addEventListener("input", evt => {
+        
+        const dtListOption = Array.from(document.querySelector(`#${stateInput.getAttribute("list")}`).children);
+        
+        let state;
+        
+        for ( let child of dtListOption ) {
+            
+            const childValue = child.getAttribute("value");
+            
+            if ( childValue === stateInput.value ) {
+                state = child;
+                break;
+            }
+        }
+        if ( ! state )
+            return ;
+        util.initLGA(state.getAttribute("data-value-id"));
+    });
+    
+    window.addEventListener("DOMContentLoaded", () => {
+        util.initStates();
+    });
 })();
