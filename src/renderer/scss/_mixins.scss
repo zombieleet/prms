@@ -1,0 +1,6 @@
+@mixin activeMixin {
+    background: darken($color-var, 20%) !important;
+    [data-type] {
+        color: $color-var !important;
+    }
+}
