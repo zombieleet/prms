@@ -78,9 +78,21 @@ module.exports = new(class Prisoner extends DB {
             return false;
         return result;
     }
-    
+
     viewPrisoner() {
         webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/ViewPrisoner.jade`);
+    }
+
+    async deletePrisoner(query = {}, options = {} ) {
+        let result;
+        try {
+            result = await this.delete(query, options);
+        } catch(ex) {
+            result = ex;
+        }
+        if ( Error[Symbol.hasInstance](result) )
+            return false;
+        return true;
     }
 
 })("prisoner.db");
