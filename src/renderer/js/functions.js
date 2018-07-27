@@ -5,7 +5,7 @@
     const prisFunc = document.querySelector(".prison-functions");
 
     prisFunc.addEventListener("click", evt => {
-        
+
         let { target } = evt;
 
         target = HTMLParagraphElement[Symbol.hasInstance](target)
@@ -15,7 +15,7 @@
                     return target;
                 return undefined;
             })();
-        
+
         if ( ! target )
             return;
 

@@ -41,7 +41,7 @@
         }
 
         res.viewPrisoner();
-        
+
     });
 
     bview.addEventListener("click", util.navigateWebView);

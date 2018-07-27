@@ -37,13 +37,13 @@
         const cellMateEl = document.querySelector(".cell-mates");
 
         const { inMate , cellNumber } = await prisoner.getCellMate();
-        
+
         if ( cellMateEl.childElementCount >= 1 ) {
             Array.from(cellMateEl.children, el => el.remove());
         }
 
         localStorage.setItem("CELL_NUMBER", cellNumber);
-        
+
         if ( inMate.length === 0 ) {
             const p = document.createElement("p");
             p.setAttribute("class", "no-cell-mate");

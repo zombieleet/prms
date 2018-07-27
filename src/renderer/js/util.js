@@ -32,7 +32,7 @@ module.exports.navigateWebView = evt => {
         const inputs = form.querySelectorAll("input");
         const storage = {};
         storage.picture = {};
-        
+
         processPairs(form, (input,key,value) => {
             const dataDataType = input.getAttribute("data-data-type");
             switch(dataDataType) {
@@ -41,6 +41,7 @@ module.exports.navigateWebView = evt => {
                 storage[key] = value;
                 break;
             case "picture":
+                console.log(input);
                 Object.assign(storage.picture,{
                     [key]: value
                 });

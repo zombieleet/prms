@@ -6,16 +6,16 @@ const DataStore = require("nedb");
 
 
 module.exports = class DB {
-    
+
     constructor(collection) {
-        
+
         this.db = new DataStore({
             filename: path.join(app.getPath("userData"), collection)
         });
-        
+
         this.DataStore = DataStore;
         this.err = err => err ? dialog.showErrorBox("unexpected error", "cannot load database " + err): "";
-        
+
         this.db.loadDatabase( this.err );
     }
 

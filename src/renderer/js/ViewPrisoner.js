@@ -30,7 +30,7 @@
             prisonerList.appendChild(p);
             return ;
         }
-        
+
         const prsionerList = document.querySelector("prisoner-list");
 
         ul = document.createElement("ul");
@@ -40,7 +40,7 @@
         prisonerList.appendChild(ul);
 
         prisoner.forEach( data => {
-            
+
             const li = document.createElement("li");
 
             const img = new Image();
@@ -55,7 +55,7 @@
 
             button.setAttribute("class", "prisoner-delete");
             button.textContent = "Delete";
-            
+
             li.setAttribute("data-prisoner-id", data._id);
             li.setAttribute("class", "prisoner-item");
             li.appendChild(img);

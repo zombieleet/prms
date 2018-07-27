@@ -21,17 +21,17 @@ module.exports = new(class Prisoner extends DB {
     constructor(collection) {
         super(collection);
     }
-    
+
     addPrisoner() {
         webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/AddPrisoner.jade`);
     }
-    
+
     getCellMate() {
 
         const cellMate = new this.DataStore({
             filename: path.join(app.getPath("userData"), "cell.db")
         });
-        
+
         cellMate.loadDatabase( this.err );
 
         return new Promise( ( resolve, reject ) => {
@@ -53,7 +53,7 @@ module.exports = new(class Prisoner extends DB {
         });
 
     }
-    
+
     async save(data) {
         let result;
         try {
@@ -66,7 +66,7 @@ module.exports = new(class Prisoner extends DB {
         }
         return this;
     }
-    
+
     async __viewPrisoner(query = {}) {
         let result ;
         try {
