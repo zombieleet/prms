@@ -10,8 +10,9 @@ block content
   
   div.prisoners
     label
-      span search by prison number
-      input(type="number" min="1" max="300")
+      span.prisoner-identify-static search by prison number
+      input(type="number" class="prisoner-search" min="1" max="300")
+    i(class="fa fa-search fa-2x prisoner-search-icon")
     hr
     ul.prisoners-section
       li.prisoner-section-list.active
@@ -24,6 +25,8 @@ block content
         a(data-type="discharged") Discharged
       li.prisoner-section-list
         a(data-type="male") Male
+      li.prisoner-section-list
+        a(data-type="female") Female
       li.prisoner-section-list
         a(data-type="inview") In View
       li.prisoner-section-list
