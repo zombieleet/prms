@@ -5,6 +5,9 @@
     const prisonerSection = document.querySelector(".prisoners-section");
     const prisonerList = document.querySelector(".prisoner-list");
 
+
+    let QUERY;
+
     const setActiveClicked = target => {
         const parentNodeLi = target.parentNode;
         const activeNode = document.querySelector(".active");
@@ -91,22 +94,27 @@
 
         let dataType = target.getAttribute("data-type");
 
+
         switch(dataType) {
         case "{}":
+            QUERY = {};
             await requestPrisoner({});
             break;
         case "male":
         case "female":
+            QUERY = { gender: dataType };
             await requestPrisoner({ gender: dataType });
             break;
         case "transfered":
         case "discharged":
         case "misconvicted":
         case "inview":
+            QUERY = { status: dataType };
             await requestPrisoner({ status: dataType });
             break;
         case "lethal":
         case "nonlethal":
+            QUERY = { lethal: dataType };
             await requestPrisoner({ lethal: dataType });
             break;
         default:
@@ -114,6 +122,26 @@
         }
 
         setActiveClicked(target);
+
+    });
+
+    prisonerList.addEventListener("click", async (evt) => {
+
+        const { target } = evt;
+
+        if ( target.classList.contains("prisoner-delete" ) ) {
+
+            const prisonerId = target.parentNode.getAttribute("data-prisoner-id");
+            let res;
+
+            if ( ! ( res = await prisoner.deletePrisoner({ _id: prisonerId}) ) ) {
+                dialog.showErrorBox("unexpected error","error deleting prisoner");
+                return;
+            }
+
+            requestPrisoner(QUERY);
+            return ;
+        }
 
     });
 })();
