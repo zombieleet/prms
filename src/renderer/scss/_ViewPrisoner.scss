@@ -12,10 +12,6 @@
     
     color: $color-var;
 
-    input {
-        width: 100%;
-    }
-
     .prisoners-section {
         padding: 12px;
         padding-top: initial;
@@ -58,7 +54,7 @@
 }
 
 .prisoner-list-item {
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 100%;
     padding-right: 25px;
 }
@@ -66,15 +62,21 @@
 .prisoner-item {
 
     border: 1px solid darken($color-var, 20%);
-    padding: 20px;
+    padding: 10px;
 
     margin-top: 20px;
+    box-shadow: 1px 1px 1px;
+
+    display: inline-block;
+    height: 250px;
 }
 
 .prisoner-view-full {
     cursor: pointer;
     display: block;
     margin-top: 12px;
+    text-align: center;
+    color: $color-var;
     &:hover {
         text-decoration: underline;
         color: $color-var;
@@ -83,11 +85,36 @@
 
 .prisoner-delete {
     @extend %button;
-    float: right;
-    margin-top: -12px;
+    display: flex;
+    margin: auto;
+    margin-top: 39px;
     padding: 5px;
     width: 50px;
     border-radius: 5px;
     background: darken(red,30%);
     color: white;
+}
+
+.prisoner-front-view-image {
+    width: 100%;
+}
+
+.prisoner-search {
+    display: inline-flex;
+    width: 80% !important;
+    vertical-align: super;
+    margin-left: 15px;
+}
+
+.prisoner-search-icon {
+    margin-left: 5px;
+    cursor: pointer;
+    &:hover {
+        color: lighten($color-var, 12%);
+    }
+}
+
+.prisoner-identify-static {
+    text-align: center;
+    margin-left: 18px;
 }
