@@ -1,0 +1,79 @@
+@mixin __before__($content) {
+    content: $content;
+    font-size: 1.5em;
+    text-decoration: underline;
+    color: lighten($color-var,20%);
+}
+
+
+.prisoner-info {
+    
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    position: relative;
+    top: 150px;
+
+    height: 1000px;
+
+    overflow-y: auto;
+
+    .info {
+        
+        padding: 15px;
+        
+        .prisoner-images {
+            img {
+                &:not(:first-of-type) {
+                    margin-left: 12px;
+                }
+            }
+        }
+
+        .btn-states {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            button {
+                @extend %button;
+                &:not(:first-of-type) {
+                    margin-left: 12px;
+                }
+            }
+        }
+    }
+
+    .prisoner-user-info,
+    .prisoner-family-info,
+    .prisoner-prison-info {
+        margin-top: 50px;
+        line-height: 2;
+        p {
+            color: lighten($color-var, 12%);
+            margin-left: 50px;
+        }
+    }
+
+    .prisoner-user-info {
+        &:before {
+            @include __before__("Prisoner Information:");
+        }
+    }
+
+    .prisoner-family-info {
+        > div:last-of-type {
+            margin-top: 30px;
+        }
+        &:before {
+            @include __before__("Prisoner Relative Information:");
+        }
+    }
+
+    .prisoner-prison-info {
+        padding-bottom: 500px;
+        &:before {
+            @include __before__("Prison Information:");
+        }
+    }
+    
+}
