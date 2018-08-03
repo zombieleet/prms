@@ -67,6 +67,22 @@ module.exports = new(class Prisoner extends DB {
         return this;
     }
 
+    async updateRecord( query = {}, options = {} ) {
+        let result;
+        try {
+            result = await this.update(query, options);
+        } catch(ex) {
+            result = ex;
+        }
+        if ( Error[Symbol.hasInstance](result) ) {
+            return false;
+        }
+        console.log(result);
+        if ( result !== 0 )
+            return true;
+        return false;
+    }
+    
     async __viewPrisoner(query = {}) {
         let result ;
         try {
