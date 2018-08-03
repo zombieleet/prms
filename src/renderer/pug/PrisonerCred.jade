@@ -35,8 +35,8 @@ html
         div.dob
           label
             span Date of Birth
-            input(type="date" class="prisoner-dob" data-db="dob" required name="dob")
-  
+            input(type="date" class="prisoner-dob" data-db="dob" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required name="dob")
+
         div.location
           label
             span State
@@ -68,6 +68,9 @@ html
           label
             span Branch Name
             input(type="text" class="prisoner-prison-name" data-db="prisonName" name="prisonname")
+          label
+            span Date of Conviction
+            input(type="date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required data-db="dateOfConviction")
 
         div.commit
           label
@@ -87,7 +90,7 @@ html
               datalist(id="gender")
                 option(value="male")
                 option(value="female")
-                
+
         div.danger
           label
             span Lethal Level
