@@ -31,6 +31,7 @@ module.exports.navigateWebView = evt => {
 
         const inputs = form.querySelectorAll("input");
         const storage = {};
+        
         storage.picture = {};
 
         processPairs(form, (input,key,value) => {
@@ -41,7 +42,6 @@ module.exports.navigateWebView = evt => {
                 storage[key] = value;
                 break;
             case "picture":
-                console.log(input);
                 Object.assign(storage.picture,{
                     [key]: value
                 });
@@ -50,6 +50,11 @@ module.exports.navigateWebView = evt => {
                 storage[key] = value;
             }
         });
+
+        const convictionDate = Number(storage.dateOfConviction.match(/[0-9]{4}/)[0]);
+        const yearsCharged = storage.chargedYears;
+
+        storage.dischargeDate = convictionDate + yearsCharged;
 
         localStorage.setItem("PRISONER_STORAGE", JSON.stringify(storage));
     }
