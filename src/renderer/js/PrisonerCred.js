@@ -1,5 +1,7 @@
 ; ( () => {
 
+    require("../js/util.js").colorMode();
+    
     const { remote: { app, dialog, Menu, MenuItem, getCurrentWindow } } = require("electron");
     const picture = document.querySelector(".picture");
     const nView = document.querySelector(".next-view");

@@ -1,5 +1,7 @@
 ; ( () => {
 
+    require("../js/util.js").colorMode();
+
     const { remote: { dialog } } = require("electron");
 
     const util = require("../js/util.js");

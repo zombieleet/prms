@@ -2,6 +2,8 @@
 
     "use strict";
 
+    require("../js/util.js").colorMode();
+    
     const { remote: { getCurrentWindow, app } } = require("electron");
     const emitStopInterval = new(require("events"));
 
@@ -51,9 +53,4 @@
         emitStopInterval.emit("prison:interval:stop");
     }, 10000);
 
-
-    if ( ! localStorage.getItem("color-mode") )
-        localStorage.setItem("color-mode", "dark");
-    else if ( localStorage.getItem("color-mode") === "white")
-        document.body.setAttribute("data-color-mode", "white");
 })();

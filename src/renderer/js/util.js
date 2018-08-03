@@ -189,3 +189,10 @@ module.exports.xhrRequest = data => {
         xhr.send();
     });
 };
+
+module.exports.colorMode = () => {
+    if ( ! localStorage.getItem("color-mode") )
+        return localStorage.setItem("color-mode", "dark");
+    //if ( localStorage.getItem("color-mode") === "white")
+    return document.body.setAttribute("data-color-mode", "white");
+};

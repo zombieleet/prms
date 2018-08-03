@@ -1,4 +1,7 @@
 ; ( () => {
+    
+    require("../js/util.js").colorMode();
+    
     const { remote: { getCurrentWindow }  } = require("electron");
     const prisoner = require("../js/Prisoner.js");
 

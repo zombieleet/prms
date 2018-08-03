@@ -1,5 +1,7 @@
 ; ( () => {
 
+    require("../js/util.js").colorMode();
+
     const { remote: { app, dialog, getCurrentWindow } } = require("electron");
     const prisoner = require("../js/Prisoner.js");
     const prisonerSection = document.querySelector(".prisoners-section");
