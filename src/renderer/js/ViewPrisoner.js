@@ -1,6 +1,6 @@
 ; ( () => {
 
-    const { remote: { app, dialog } } = require("electron");
+    const { remote: { app, dialog, getCurrentWindow } } = require("electron");
     const prisoner = require("../js/Prisoner.js");
     const prisonerSection = document.querySelector(".prisoners-section");
     const prisonerList = document.querySelector(".prisoner-list");
@@ -8,6 +8,13 @@
 
     let QUERY;
 
+    const showPrisonerInfo = evt => {
+        const { target } = evt;
+        const prisonerId = target.parentNode.getAttribute("data-prisoner-id");
+        localStorage.setItem("PRISONER_ID", prisonerId);
+        getCurrentWindow().loadURL(`file://${app.getAppPath()}/src/renderer/pug/PrisonerInfo.jade`);
+    };
+    
     const setActiveClicked = target => {
         const parentNodeLi = target.parentNode;
         const activeNode = document.querySelector(".active");
@@ -56,6 +63,7 @@
             a.setAttribute("class", "prisoner-view-full");
             a.textContent = `${data.lastName} ${data.firstName}`;
 
+            a.addEventListener("click", showPrisonerInfo);
             button.setAttribute("class", "prisoner-delete");
             button.textContent = "Delete";
 
