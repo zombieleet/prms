@@ -1,5 +1,6 @@
 body {
     font-family: $font-family;
+    -webkit-user-select: none;
 }
 
 ::-webkit-scrollbar {
