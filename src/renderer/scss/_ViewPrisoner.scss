@@ -69,6 +69,10 @@
 
     display: inline-block;
     height: 250px;
+
+    &:not(:first-of-type) {
+        margin-left: 12px;
+    }
 }
 
 .prisoner-view-full {
