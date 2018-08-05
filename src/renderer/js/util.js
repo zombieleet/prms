@@ -148,6 +148,7 @@ module.exports.preventDataListDefault = () => {
     });
 };
 
+
 module.exports.initStates = () => {
     const worker = new Worker("../js/initstates.js");
     const stateDataList = document.querySelector("#stateList");
@@ -161,7 +162,7 @@ module.exports.initStates = () => {
     });
 };
 
-module.exports.initLGA = id => {
+const initLGA = id => {
     const worker = new Worker("../js/initlga.js");
     const lgaDataList = document.querySelector("#lgalist");
     worker.addEventListener("message", evt => {
@@ -171,6 +172,31 @@ module.exports.initLGA = id => {
         lgaDataList.appendChild(option);
     });
     worker.postMessage({ appPath: app.getAppPath(), stateId: id});
+};
+
+module.exports.initLGA = initLGA;
+
+module.exports.lgaOfState = evt => {
+    
+    const { target } = evt;
+    
+    const dtListOption = Array.from(document.querySelector(`#${target.getAttribute("list")}`).children);
+
+    let state;
+
+    for ( let child of dtListOption ) {
+
+        const childValue = child.getAttribute("value");
+
+        if ( childValue === target.value ) {
+            state = child;
+            break;
+        }
+    }
+    if ( ! state )
+        return ;
+    
+    initLGA(state.getAttribute("data-value-id"));
 };
 
 module.exports.xhrRequest = data => {
