@@ -6,7 +6,6 @@
     const picture = document.querySelector(".picture");
     const nView = document.querySelector(".next-view");
     const capture = document.querySelector(".picture-capture");
-    //const lga = document.querySelector("[list=lgalist]");
     const stateInput = document.querySelector("[list=stateList]");
     const form = document.forms[0];
     const emitter = new(require("events").EventEmitter)();
@@ -24,7 +23,7 @@
         const canvas = document.querySelector("canvas");
         const context = canvas.getContext("2d");
         const img = new Image();
-        console.log(video.parentNode.getAttribute("data-direction"));
+
         context.drawImage(video, 0, 0, 199, 148);
 
         captureDirection.value = img.src = canvas.toDataURL("image/png");
@@ -109,27 +108,10 @@
     util.preventDataListDefault();
 
 
-    stateInput.addEventListener("input", evt => {
-
-        const dtListOption = Array.from(document.querySelector(`#${stateInput.getAttribute("list")}`).children);
-
-        let state;
-
-        for ( let child of dtListOption ) {
-
-            const childValue = child.getAttribute("value");
-
-            if ( childValue === stateInput.value ) {
-                state = child;
-                break;
-            }
-        }
-        if ( ! state )
-            return ;
-        util.initLGA(state.getAttribute("data-value-id"));
-    });
+    stateInput.addEventListener("input", util.lgaOfState);
 
     window.addEventListener("DOMContentLoaded", () => {
         util.initStates();
     });
+    
 })();
