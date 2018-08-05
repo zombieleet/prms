@@ -217,8 +217,8 @@ module.exports.xhrRequest = data => {
 };
 
 module.exports.colorMode = () => {
-    if ( ! localStorage.getItem("color-mode") )
+    if ( ! localStorage.getItem("color-mode") || localStorage.getItem("color-mode") === "dark" )
         return localStorage.setItem("color-mode", "dark");
-    //if ( localStorage.getItem("color-mode") === "white")
-    return document.body.setAttribute("data-color-mode", "white");
+    if ( localStorage.getItem("color-mode") === "white")
+        return document.body.setAttribute("data-color-mode", "white");
 };
