@@ -1,0 +1,68 @@
+doctype html
+
+extends ./_template.jade
+
+block title
+  title Add Warder
+
+block content
+
+  include ./_HeaderButton.jade
+  
+  div.add-warder
+
+    form.warder
+
+      div.add-warder-picture
+        input(type="text" class="__picture__preview__container hide" data-db="picture" required)
+        input(type="file" class="__picture__trigger hide" accept="image/*" required)
+        div.add-warder-picture-preview
+          p Upload Picture
+          img(class="hide")
+
+      div.add-warder-name
+        label
+          span First Name:
+          input(type="text" data-db="firstName" required name="firstname")
+        label
+          span Last Name:
+          input(type="text" data-db="lastName" required name="lastname")
+
+      div.add-warder-address
+        label
+          span Address
+          textarea(row="500" col="500" data-db="address" required name="address")
+  
+      div.dob
+        label
+          span Date Of Birth:
+          input(type="date" data-db="dob" required name="dob")
+  
+          
+      div.state
+        label
+          span State of Origin:
+          input(list="stateList" data-db="stateOfOrigin" required name="stateoforigin")
+          datalist(id="stateList")
+  
+      div.lga
+        label
+          span Local Government Area:
+          input(list="lgalist" data-db="lga" required name="lga")
+          datalist(id="lgalist")
+          
+      div.gender
+        label
+          span Gender:
+          input(list="GENDER" data-db="gender" required name="lga")
+          datalist(id="GENDER")
+            option(value="male")
+            option(value="female")
+            
+      div.buttons
+        button(type="button" class="save") Save
+        button(type="reset" class="reset") Reset
+        
+          
+
+  script(src="../js/AddWarder.js")
