@@ -1,0 +1,95 @@
+
+div.add-warder {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 50px;
+}
+
+form.warder {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 500px;
+    width: 100%;
+    padding-bottom: 190px;
+}
+
+.add-warder-picture {
+    .add-warder-picture-preview {
+        background-color: $color-var;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        width: 199px;
+        height: 148px;
+        p {
+            font-size: 1.5em;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            opacity: .1;
+            color: darken($color-var, 20%);
+            cursor: pointer;
+        }
+    }
+}
+
+.add-warder-name {
+    label {
+        display: inline-block;
+        &:last-of-type {
+            margin-left: 20px;
+        }
+    }
+}
+
+.add-warder-address {
+    label {
+
+        textarea {
+            display: block;
+            margin: 0px;
+            margin-top: 12px;
+            width: 399px;
+            height: 41px;
+            resize: none;
+
+            border-radius: 12px;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+    }
+}
+
+.buttons {
+    > button {
+        @extend %button;
+        &:first-of-type {
+            margin-left: -2px;
+        }
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.preview-warder-picture {
+    height: inherit;
+    width: inherit;
+}
+
+.close-preview {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -154px;
+    margin-left: 205px;
+    font-size: xx-large;
+    cursor: pointer;
+    color: black;
+    &:hover {
+        color: lighten(black,20%);
+    }
+}
