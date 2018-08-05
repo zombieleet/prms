@@ -1,10 +1,13 @@
+
 ; ( () => {
     
     require("../js/util.js").colorMode();
     
     const { remote: { getCurrentWindow }  } = require("electron");
+    
     const prisoner = require("../js/Prisoner.js");
-
+    const warder = require("../js/Warder.js");
+    
     const prisFunc = document.querySelector(".prison-functions");
 
     prisFunc.addEventListener("click", evt => {
@@ -30,6 +33,7 @@
             prisoner[execType]();
             break;
         case "warder":
+            warder[execType]();
             break;
         default:
             ;
