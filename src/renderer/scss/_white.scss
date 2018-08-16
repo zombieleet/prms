@@ -7,7 +7,7 @@ body[data-color-mode=white] {
         }
     }
 
-    input {
+    input,textarea {
         transition: .5s ease-in;
         border: 1px solid black;
     }
