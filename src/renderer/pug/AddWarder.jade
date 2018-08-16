@@ -59,6 +59,14 @@ block content
             option(value="male")
             option(value="female")
             
+      div.occupation
+        label
+          span Employment Date:
+          input(type="date" data-db="employment-date" required name="empdate")
+        label
+          span Retirement Date:
+          input(type="date" data-db="retirement-date" required name="rtrdate" disabled)
+            
       div.buttons
         button(type="button" class="save") Save
         button(type="reset" class="reset") Reset
