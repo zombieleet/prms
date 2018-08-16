@@ -1,6 +1,6 @@
 "use strict";
 
-const { Menu, nativeImage, app } = require("electron");
+const { Menu, nativeImage, app, dialog } = require("electron");
 const appRoot = app.getAppPath();
 
 const fileSubmenu = () => [
@@ -9,17 +9,20 @@ const fileSubmenu = () => [
         submenu: [
             {
                 label: "Add",
-                click() {
+                click(mItem, { webContents } ) {
+                    webContents.send("prms::add:prisoner");
                 }
             },
             {
                 label: "View",
-                click() {
+                click(mItem, { webContents } ) {
+                    webContents.send("prms::view:prisoner");
                 }
             },
             {
                 label: "Delete",
-                click() {
+                click(mItem, { webContents } ) {
+                    webContents.send("prms::delete:prisoner");
                 }
             }
         ]
@@ -30,17 +33,20 @@ const fileSubmenu = () => [
         submenu: [
             {
                 label: "Add",
-                click() {
+                click(mItem, { webContents } ) {
+                    webContents.send("prms::add:warder");
                 }
             },
             {
                 label: "View",
-                click() {
+                click(mItem, { webContents } ) {
+                    webContents.send("prms::view:warder");
                 }
             },
             {
                 label: "Delete",
-                click() {
+                click(mItem, { webContents } ) {
+                    webContents.send("prms::delete:warder");
                 }
             }
         ]
@@ -51,17 +57,20 @@ const fileSubmenu = () => [
         submenu: [
             {
                 label: "Add",
-                click() {
+                click(mItem, { webContents } ) {
+                    webContents.send("prms::add:visitors");
                 }
             },
             {
                 label: "View",
-                click() {
+                click(mItem, { webContents } ) {
+                    webContents.send("prms::view:visitor");
                 }
             },
             {
                 label: "Delete",
-                click() {
+                click(mItem, { webContents } ) {
+                    webContents.send("prms::delete:visitor");
                 }
             }
         ]
@@ -91,7 +100,9 @@ const viewSubMenu = () => [
     { type: "separator" },
     {
         label: "Fullscreen",
-        click() {
+        accelerator: "f11",
+        click(mItem, BrowserWindow ) {
+            BrowserWindow.setFullScreen(!BrowserWindow.isFullScreen());
         }
     },
     { type: "separator" },
@@ -134,8 +145,30 @@ const editSubMenu = () => [
 const helpSubMenu = () => [
     {
         label: "About",
-        click() {
-        }
+        submenu: [
+            {
+                label: "Electron",
+                click() {
+                    dialog.showMessageBox({
+                        type: "info",
+                        title: "About Electron",
+                        message: "Electron is a framework which allows webdevelopers to leverage their current skills in web development in building desktop applications. See more https://electron.com",
+                        buttons: [ "Ok" ]
+                    });
+                }
+            },
+            {
+                label: "Prison Management System",
+                click() {
+                    dialog.showMessageBox({
+                        type: "info",
+                        title: "About Prision Management System",
+                        message: "Prison Management System is a desktop application built as part of the completion of the four (4) years program in computer science",
+                        buttons: [ "Ok" ]
+                    });
+                }
+            }
+        ]
     },
     {
         label: "Docmentation",
