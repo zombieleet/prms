@@ -5,7 +5,7 @@
     const { remote: { app, dialog } } = require("electron");
 
     const prisoner = require("../js/Prisoner.js");
-    const { initWebViewListener, initStates } = require("../js/util.js");
+    const { initWebViewListener, initStates, loadingDocument } = require("../js/util.js");
     const prisonerPicture = document.querySelector(".prisoner-picture");
 
     const emitter = new(require("events").EventEmitter)();
@@ -14,6 +14,12 @@
     webview.addEventListener("dom-ready", evt => {
         initWebViewListener();
         webview.openDevTools( { mode: "bottom" } );
+    });
+
+    document.addEventListener("readystatechange", loadingDocument );
+
+    webview.addEventListener("did-stop-loading", evt => {
+        console.log("loading stop");
     });
 
     webview.src=`file://${app.getAppPath()}/src/renderer/pug/PrisonerCred.jade`;

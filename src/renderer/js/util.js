@@ -222,3 +222,26 @@ module.exports.colorMode = () => {
     if ( localStorage.getItem("color-mode") === "white")
         return document.body.setAttribute("data-color-mode", "white");
 };
+
+module.exports.loadingDocument = evt => {
+    console.log(evt);
+    const loader = document.querySelector(".document-loading") || document.createElement("div");
+    
+    if ( evt.target.readyState === "complete" ) {
+        loader.remove();
+        return ;
+    }
+    
+    if ( document.querySelector(".document-loading") )
+        return ;
+    
+    const loadingIcon = document.createElement("loadingIcon");
+    
+    loadingIcon.setAttribute("class", "fa fa-gear");
+    
+    loader.setAttribute("class", "document-loading");
+    loader.appendChild(loadingIcon);
+    
+    document.body.appendChild(loader);
+    
+};
