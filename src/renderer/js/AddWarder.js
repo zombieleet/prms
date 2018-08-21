@@ -65,7 +65,8 @@
 
         let res;
 
-        Array.from(form.children, el => {
+        Array.from(form.elements, el => {
+            console.log(el);
             if ( ! el.hasAttribute("data-db") )
                 return ;
             Object.assign(ADD_WARDER, {
@@ -73,14 +74,10 @@
             });
         });
 
-
-
-
         if ( ! ( res = await warder.save(ADD_WARDER) ) ) {
             dialog.showErrorBox(`unexpected error`,`cannot save this information, contact the administrator`);
             return ;
         }
-
         res.viewWarder();
     });
 
