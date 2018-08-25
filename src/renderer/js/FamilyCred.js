@@ -37,12 +37,12 @@
 
         let res;
 
-        if ( ! ( res = await prisoner.save(storage) ) ) {
+        if ( ! ( res = await prisoner.saveRecord(storage) ) ) {
             dialog.showErrorBox("Cannot save data", "error while saving prisoner information " + res);
             return;
         }
 
-        res.viewPrisoner();
+        res.viewRecordView("ViewPrisoner");
 
     });
 

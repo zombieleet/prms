@@ -7,6 +7,9 @@
     
     const prisoner = require("../js/Prisoner.js");
     const warder = require("../js/Warder.js");
+    const visitor = require("../js/Visitor.js");
+
+    console.log(prisoner);
     
     const prisFunc = document.querySelector(".prison-functions");
 
@@ -28,13 +31,17 @@
         const type = target.parentNode.getAttribute("data-sect");
         const execType = target.getAttribute("data-execute");
 
+        const arg = target.getAttribute("data-arg");
+        
         switch(type) {
         case "prisoner":
-            prisoner[execType]();
+            prisoner[execType](arg);
             break;
         case "warder":
-            warder[execType]();
+            warder[execType](arg);
             break;
+        case "visitor":
+            visitor[execType](arg);
         default:
             ;
         }

@@ -6,6 +6,7 @@
     const prisoner = require("../js/Prisoner.js");
     const prisonerSection = document.querySelector(".prisoners-section");
     const prisonerList = document.querySelector(".prisoner-list");
+    const search = document.querySelector(".prisoner-search");
 
 
     let QUERY;
@@ -16,7 +17,7 @@
         localStorage.setItem("PRISONER_ID", prisonerId);
         getCurrentWindow().loadURL(`file://${app.getAppPath()}/src/renderer/pug/PrisonerInfo.jade`);
     };
-    
+
     const setActiveClicked = target => {
         const parentNodeLi = target.parentNode;
         const activeNode = document.querySelector(".active");
@@ -81,7 +82,7 @@
 
     const requestPrisoner = async (query = {}) => {
         let res ;
-        if ( ! ( res = await prisoner.__viewPrisoner(query) ) ) {
+        if ( ! ( res = await prisoner.viewRecord(query) ) ) {
             dialog.showErrorBox("unexpected error","unexpected error while communicating with database to get prisoners info "  + res);
             return ;
         }
@@ -144,7 +145,7 @@
             const prisonerId = target.parentNode.getAttribute("data-prisoner-id");
             let res;
 
-            if ( ! ( res = await prisoner.deletePrisoner({ _id: prisonerId}) ) ) {
+            if ( ! ( res = await prisoner.deleteRecord({ _id: prisonerId}) ) ) {
                 dialog.showErrorBox("unexpected error","error deleting prisoner");
                 return;
             }
@@ -154,4 +155,22 @@
         }
 
     });
+
+    search.addEventListener("input", async (evt) => {
+        
+        const { target } = evt;
+        
+        const cellNumber = target.valueAsNumber;
+        const activeType = document.querySelector(".active");
+
+        activeType.classList.remove("active");
+
+        if ( isNaN(cellNumber) && target.value.length > 0 ) {
+            dialog.showErrorBox("unexpected error", "Contact the system administrator if you see this error box");
+            return ;
+        }
+        
+        requestPrisoner({ cellNumber });
+    });
+    
 })();

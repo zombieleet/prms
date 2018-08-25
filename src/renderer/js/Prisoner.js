@@ -22,10 +22,6 @@ module.exports = new(class Prisoner extends DB {
         super(collection);
     }
 
-    addPrisoner() {
-        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/AddPrisoner.jade`);
-    }
-
     getCellMate() {
 
         const cellMate = new this.DataStore({
@@ -52,63 +48,6 @@ module.exports = new(class Prisoner extends DB {
             });
         });
 
-    }
-
-    async save(data) {
-        let result;
-        try {
-            result = await this.add(data);
-        } catch(ex) {
-            result = ex;
-        }
-        if ( Error[Symbol.hasInstance](result) ) {
-            return false;
-        }
-        return this;
-    }
-
-    async updateRecord( query = {}, options = {} ) {
-        let result;
-        try {
-            result = await this.update(query, options);
-        } catch(ex) {
-            result = ex;
-        }
-        if ( Error[Symbol.hasInstance](result) ) {
-            return false;
-        }
-        console.log(result);
-        if ( result !== 0 )
-            return true;
-        return false;
-    }
-    
-    async __viewPrisoner(query = {}) {
-        let result ;
-        try {
-            result = await this.view(query);
-        } catch(ex) {
-            result = ex;
-        }
-        if ( Error[Symbol.hasInstance](result) )
-            return false;
-        return result;
-    }
-
-    viewPrisoner() {
-        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/ViewPrisoner.jade`);
-    }
-
-    async deletePrisoner(query = {}, options = {} ) {
-        let result;
-        try {
-            result = await this.delete(query, options);
-        } catch(ex) {
-            result = ex;
-        }
-        if ( Error[Symbol.hasInstance](result) )
-            return false;
-        return true;
     }
 
 })("prisoner.db");

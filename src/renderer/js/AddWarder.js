@@ -74,11 +74,11 @@
             });
         });
 
-        if ( ! ( res = await warder.save(ADD_WARDER) ) ) {
+        if ( ! ( res = await warder.saveRecord(ADD_WARDER) ) ) {
             dialog.showErrorBox(`unexpected error`,`cannot save this information, contact the administrator`);
             return ;
         }
-        res.viewWarder();
+        res.viewRecordView("ViewWarders");
     });
 
     window.addEventListener("DOMContentLoaded", async (evt) => {

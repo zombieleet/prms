@@ -1,13 +1,17 @@
 ;( () => {
 
+    "use strict";
+    
+    require("../js/util.js").colorMode();
+    
     const { remote: { dialog, getCurrentWindow } } = require("electron");
     const prisoner = require("../js/Prisoner.js");
+
+    const { reverseString } = require("../js/util.js");
 
     const infoContainer = document.querySelector(".info");
 
     const win = getCurrentWindow();
-
-    const reverseString = str => str.split("-").reverse().join("-");
 
 
     const setState = evt => {
@@ -306,7 +310,7 @@
         const prisonerId = localStorage.getItem("PRISONER_ID");
         let res;
         ; ( async () => {
-            if ( ! (res = await prisoner.__viewPrisoner({ _id: prisonerId }) ) ) {
+            if ( ! (res = await prisoner.viewRecord({ _id: prisonerId }) ) ) {
                 dialog.showErrorBox("unexpected error","cannot read info of prisoner with id " + prisonerId);
                 if ( win.webContents.canGoBack() )
                     win.webContents.goBack();
