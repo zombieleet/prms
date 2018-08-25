@@ -11,28 +11,28 @@ block content
 
     ul(data-sect="prisoner" class="prison-func")
 
-      li(data-execute="addPrisoner" class="prison-func-item")
+      li(data-execute="addRecordView" data-arg="AddPrisoner" class="prison-func-item")
         p Add Prisoner
-      li(data-execute="viewPrisoner" class="prison-func-item")
+      li(data-execute="viewRecordView" data-arg="ViewPrisoner" class="prison-func-item")
         p View Prisoner
-      li(data-execute="deletePrisoner" class="prison-func-item")
+      li(data-execute="deleteRecordView" data-arg="ViewPrisoner" class="prison-func-item")
         p Delete Prisoner
 
     ul(data-sect="warder", class="prison-func")
 
-      li(data-execute="addWarder" class="prison-func-item")
+      li(data-execute="addRecordView" data-arg="AddWarder" class="prison-func-item")
         p Add Warder
-      li(data-execute="viewWarder" class="prison-func-item")
+      li(data-execute="viewRecordView" data-arg="ViewWarders" class="prison-func-item")
         p View Warder
-      li(class="prison-func-item")
+      li(data-execute="deleteRecordView" data-arg="ViewWarders" class="prison-func-item")
         p Delete Warder
 
     ul(data-sect="visitor" class="prison-func")
 
-      li(class="prison-func-item")
+      li(data-execute="addRecordView" data-arg="AddVisitor" class="prison-func-item")
         p Add Visitor
-      li(class="prison-func-item")
+      li(data-execute="viewRecordView" data-arg="ViewVisitor" class="prison-func-item")
         p View Visitor
-      li(class="prison-func-item")
+      li(data-execute="deleteRecordView" data-arg="ViewVisitor" class="prison-func-item")
         p Delete Visitor
   script(src="../js/functions.js")
