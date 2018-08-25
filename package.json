@@ -1,24 +1,24 @@
 {
-  "name": "prision",
-  "version": "1.0.0",
-  "description": "",
-  "main": "./src/main/index.js",
-  "productName": "Prison Management System",
-  "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "devtron": "^1.4.0",
-    "electron": "^1.8.7",
-    "electron-reload": "^1.2.5",
-    "electron-prebuilt-compile": "^2.0.3"
-  },
-  "dependencies": {
-    "nedb": "^1.8.0",
-    "electron-compile":  "^6.4.3"
-  }
+    "name": "prision",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./src/main/index.js",
+    "productName": "Prison Management System",
+    "scripts": {
+        "start": "electron .",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "devtron": "^1.4.0",
+        "electron": "^1.8.7"
+    },
+    "dependencies": {
+        "nedb": "^1.8.0",
+        "electron-compile":  "^6.4.3",
+        "electron-reload": "^1.2.5",
+        "electron-prebuilt-compile": "^2.0.3"
+    }
 }
