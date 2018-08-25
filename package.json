@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "nedb": "^1.8.0",
-        "electron-compile":  "^6.4.3",
+        "electron-compile": "^6.4.3",
         "electron-reload": "^1.2.5",
         "electron-prebuilt-compile": "^2.0.3"
     }
