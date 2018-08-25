@@ -245,3 +245,5 @@ module.exports.loadingDocument = evt => {
     document.body.appendChild(loader);
     
 };
+
+module.exports.reverseString = str => str.split("-").reverse().join("-");
