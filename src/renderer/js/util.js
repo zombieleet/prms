@@ -2,10 +2,58 @@
 
 const path = require("path");
 const isWorker = self.global.location.constructor.name;
-let ipc, app, dialog;
+let ipc, app, dialog, getCurrentWindow;
 
 if ( isWorker !== "WorkerLocation" ) {
-    ({ ipcRenderer: ipc, remote: { app, dialog } } = require("electron"));
+
+    const prisoner = require("../js/Prisoner.js");
+
+    ({ ipcRenderer: ipc, remote: { app, dialog, getCurrentWindow } } = require("electron"));
+
+    const { webContents } = getCurrentWindow();
+
+    ipc.on("prms::home", () => {
+        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/index.jade`);
+    });
+
+    ipc.on("prms::add:prisoner", () => {
+        prisoner.addRecordView("AddPrisoner");
+    });
+
+    ipc.on("prms::view:prisoner", () => {
+        prisoner.viewRecordView("ViewPrisoner");
+    });
+
+    ipc.on("prms::delete:prisoner", () => {
+        prisoner.viewRecordView("ViewPrisoner");
+    });
+
+
+    ipc.on("prms::add:warder", () => {
+        prisoner.addRecordView("AddWarder");
+    });
+
+    ipc.on("prms::view:warder", () => {
+        prisoner.viewRecordView("ViewWarders");
+    });
+
+    ipc.on("prms::delete:warder", () => {
+        prisoner.viewRecordView("ViewWarders");
+    });
+
+    
+    ipc.on("prms::add:visitors", () => {
+        prisoner.addRecordView("AddVisitor");
+    });
+
+    ipc.on("prms::view:visitor", () => {
+        prisoner.viewRecordView("ViewVisitor");
+    });
+
+    ipc.on("prms::delete:prisoner", () => {
+        prisoner.viewRecordView("ViewVisitor");
+    });
+
 }
 
 module.exports.navigateWebView = evt => {
@@ -31,7 +79,7 @@ module.exports.navigateWebView = evt => {
 
         const inputs = form.querySelectorAll("input");
         const storage = {};
-        
+
         storage.picture = {};
 
         processPairs(form, (input,key,value) => {
@@ -177,9 +225,9 @@ const initLGA = id => {
 module.exports.initLGA = initLGA;
 
 module.exports.lgaOfState = evt => {
-    
+
     const { target } = evt;
-    
+
     const dtListOption = Array.from(document.querySelector(`#${target.getAttribute("list")}`).children);
 
     let state;
@@ -195,7 +243,7 @@ module.exports.lgaOfState = evt => {
     }
     if ( ! state )
         return ;
-    
+
     initLGA(state.getAttribute("data-value-id"));
 };
 
@@ -226,24 +274,24 @@ module.exports.colorMode = () => {
 module.exports.loadingDocument = evt => {
     console.log(evt);
     const loader = document.querySelector(".document-loading") || document.createElement("div");
-    
+
     if ( evt.target.readyState === "complete" ) {
         loader.remove();
         return ;
     }
-    
+
     if ( document.querySelector(".document-loading") )
         return ;
-    
+
     const loadingIcon = document.createElement("loadingIcon");
-    
+
     loadingIcon.setAttribute("class", "fa fa-gear");
-    
+
     loader.setAttribute("class", "document-loading");
     loader.appendChild(loadingIcon);
-    
+
     document.body.appendChild(loader);
-    
+
 };
 
 module.exports.reverseString = str => str.split("-").reverse().join("-");

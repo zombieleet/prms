@@ -5,6 +5,13 @@ const appRoot = app.getAppPath();
 
 const fileSubmenu = () => [
     {
+        label: "Home",
+        click(mItem, { webContents } ) {
+            webContents.send("prms::home");
+        }
+    },
+    { type: "separator" },
+    {
         label: "Prisoner",
         submenu: [
             {
@@ -58,7 +65,7 @@ const fileSubmenu = () => [
             {
                 label: "Add",
                 click(mItem, { webContents } ) {
-                    webContents.send("prms::add:visitors");
+                    webContents.send("prms::add:visitor");
                 }
             },
             {
@@ -87,14 +94,20 @@ const fileSubmenu = () => [
 const viewSubMenu = () => [
     {
         label: "Prisoners",
-        //icon: nativeImage.createFromPath(`${appRoot}/src/main/images/handcuff.jpeg`),
-        click() {
-            
+        click( mItem , { webContents } ) {
+            webContents.send("prms::view:prisoner");
         }
     },
     {
         label: "Warders",
-        click() {
+        click( mItem, { webContents } ) {
+            webContents.send("prms::view:warder");
+        }
+    },
+    {
+        label: "Visitors",
+        click( mItem , { webContents } ) {
+            webContents.send("prms::view:visitor");
         }
     },
     { type: "separator" },
@@ -108,39 +121,40 @@ const viewSubMenu = () => [
     { type: "separator" },
     {
         label: "Kiosk",
-        click() {
+        click(mItem, BrowserWindow ) {
+            BrowserWindow.setKiosk(!BrowserWindow.isKiosk());
         }
     },
-    {
-        label: "Zoom In",
-        click() {
-        }
-    },
-    {
-        label: "Zoom Out",
-        click() {
-        }
-    }
+    // {
+    //     label: "Zoom In",
+    //     click() {
+    //     }
+    // },
+    // {
+    //     label: "Zoom Out",
+    //     click() {
+    //     }
+    // }
 ];
 
-const editSubMenu = () => [
-    {
-        label: "Undo operation",
-        click() {
-        }
-    },
-    {
-        label: "Redo Operation",
-        click() {
-        }
-    },
-    { type: "separator" },
-    {
-        label: "settings",
-        click() {
-        }
-    }
-];
+// const editSubMenu = () => [
+//     {
+//         label: "Undo operation",
+//         click() {
+//         }
+//     },
+//     {
+//         label: "Redo Operation",
+//         click() {
+//         }
+//     },
+//     { type: "separator" },
+//     {
+//         label: "settings",
+//         click() {
+//         }
+//     }
+// ];
 
 const helpSubMenu = () => [
     {
@@ -188,10 +202,10 @@ module.exports = () => {
             label: "View",
             submenu: viewSubMenu()
         },
-        {
-            label: "Edit",
-            submenu: editSubMenu()
-        },
+        // {
+        //     label: "Edit",
+        //     submenu: editSubMenu()
+        // },
         {
             label: "Help",
             submenu: helpSubMenu()

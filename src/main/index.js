@@ -55,7 +55,7 @@ app.on("ready", () => {
     win.on("close", () => {
         win = undefined;
     });
-
+    
     win.webContents.openDevTools({
         mode: "bottom"
     });
