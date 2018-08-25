@@ -1,0 +1,70 @@
+@mixin __before__warder($content) {
+    content: $content;
+    color: darken($color-var,10%);
+}
+
+.warder {
+    position: relative;
+    top: 50px;
+    height: 850px;
+    padding-bottom: 20px;
+    color: $color-var;
+}
+
+.warder-info {
+    //height: inherit;
+    /* display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center; */
+    //justify-content: center;
+    padding: 100px;
+    padding-left: 550px;
+    img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+    .info-div {
+        margin-left: -20px;
+        p {
+            font-size: 1.2em;
+            line-height: 3;;
+            &:first-of-type {
+                margin-top: 20px;
+            }
+        }
+    }
+
+    .warder-name:before {
+      @include __before__warder("Name:  ");
+    }
+
+    .warder-address:before {
+        @include __before__warder("Address:  ");
+    }
+
+    .warder-sog:before {
+        @include __before__warder("State of Origin:  ");
+    }
+
+    .warder-lga:before {
+        @include __before__warder("Local Governemnt Area:  ");
+    }
+
+    .warder-gender:before {
+        @include __before__warder("Gender:  ");
+    }
+
+    .warder-dob:before {
+        @include __before__warder("Date of Birth:  ");
+    }
+
+    .warder-emp-date:before {
+        @include __before__warder("Employment Date:  ");
+    }
+
+    .warder-ret-date:before {
+        @include __before__warder("Retirement Date:  ");
+    }
+}
