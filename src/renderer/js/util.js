@@ -42,7 +42,7 @@ if ( isWorker !== "WorkerLocation" ) {
     });
 
     
-    ipc.on("prms::add:visitors", () => {
+    ipc.on("prms::add:visitor", () => {
         prisoner.addRecordView("AddVisitor");
     });
 
@@ -50,7 +50,7 @@ if ( isWorker !== "WorkerLocation" ) {
         prisoner.viewRecordView("ViewVisitor");
     });
 
-    ipc.on("prms::delete:prisoner", () => {
+    ipc.on("prms::delete:visitor", () => {
         prisoner.viewRecordView("ViewVisitor");
     });
     
