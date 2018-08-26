@@ -5,12 +5,12 @@ body {
 }
 
 .fake-loading {
-    text-align: center;
-    height: 100%;
-    align-content: center;
-    align-items: center;
 
-    display: grid;
+    display: flex;
+    height: 700px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
    
     color: $color-var;
 
