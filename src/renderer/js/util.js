@@ -53,7 +53,7 @@ if ( isWorker !== "WorkerLocation" ) {
     ipc.on("prms::delete:prisoner", () => {
         prisoner.viewRecordView("ViewVisitor");
     });
-
+    
 }
 
 module.exports.navigateWebView = evt => {

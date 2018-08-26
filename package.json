@@ -5,7 +5,9 @@
     "main": "./src/main/index.js",
     "productName": "Prison Management System",
     "scripts": {
-        "start": "electron .",
+        "start": "export NODE_ENV=development ; electron .",
+        "package::linux": "export NODE_ENV=production ; electron-packager . --platform=linux",
+        "package::window": "export NODE_ENV=production ; electron-packager . --platform=win32",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],

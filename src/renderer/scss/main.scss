@@ -1,24 +1,25 @@
 
-@import "variables.scss";
-@import "reset.scss";
-@import "extends.scss";
-@import "mixins.scss";
-@import "default.scss";
-@import "loading.scss";
-@import "functions.scss";
-@import "HeaderButton.scss";
+@import "variables";
+@import "reset";
+@import "extends";
+@import "mixins";
+@import "default";
+@import "loading";
+@import "functions";
+@import "HeaderButton";
 
-@import "AddPrisoner.scss";
-@import "ViewPrisoner.scss";
-@import "PrisonerInfo.scss";
+@import "AddPrisoner";
+@import "PrisonerCred.scss";
+@import "ViewPrisoner";
+@import "PrisonerInfo";
 
-@import "AddWarder.scss";
-@import "ViewWarder.scss";
-@import "WarderInfo.scss";
+@import "AddWarder";
+@import "ViewWarder";
+@import "WarderInfo";
 
-@import "AddVisitor.scss";
-@import "ViewVisitor.scss";
+@import "AddVisitor";
+@import "ViewVisitor";
 
-@import "white.scss";
+@import "white";
 
-@import "webview.scss";
+@import "webview";

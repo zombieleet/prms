@@ -7,11 +7,13 @@ const appRoot = app.getAppPath();
 
 const path = require("path");
 
-require("electron-reload")(appRoot, {
-    electron: path.join(appRoot, "node_modules", ".bin", "electron")
-});
 
-            
+if ( process.env.NODE_ENV === "development" )
+    require("electron-reload")(appRoot, {
+        electron: path.join(appRoot, "node_modules", ".bin", "electron")
+    });
+
+
 const cellCollection = new(require("nedb"))({
     filename: path.join(app.getPath("userData"), "cell.db"),
     autoload: true
@@ -34,12 +36,12 @@ cellCollection.count({}, ( err, count ) => {
     }
 });
 
+electronCompile.init(appRoot, require.resolve("./index.js"));
+
 app.on("ready", () => {
 
     require("./menu.js")();
-    
-    electronCompile.init(appRoot, require.resolve("./index.js"));
-    
+
     let win = new BrowserWindow({
         center: true,
         title: "Prison Management System",
@@ -54,15 +56,22 @@ app.on("ready", () => {
 
     win.on("close", () => {
         win = undefined;
+        app.quit();
     });
-    
-    win.webContents.openDevTools({
-        mode: "bottom"
-    });
-    
+
+    if ( process.env.NODE_ENV === "development" ) {
+        win.webContents.openDevTools({
+            mode: "bottom"
+        });
+    }
+
     win.maximize();
-    
+
     app.setName("Prison Management System");
     app.setVersion("1.0");
-    
+
+});
+
+app.on("will-quit", () => {
+    app.quit();
 });

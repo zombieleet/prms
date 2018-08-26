@@ -13,7 +13,8 @@
 
     webview.addEventListener("dom-ready", evt => {
         initWebViewListener();
-        webview.openDevTools( { mode: "bottom" } );
+        if ( process.env.NODE_ENV === "development" )
+            webview.openDevTools( { mode: "bottom" } );
     });
 
     document.addEventListener("readystatechange", loadingDocument );

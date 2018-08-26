@@ -183,11 +183,6 @@ const helpSubMenu = () => [
                 }
             }
         ]
-    },
-    {
-        label: "Docmentation",
-        click() {
-        }
     }
 ];
 
