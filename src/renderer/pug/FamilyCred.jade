@@ -1,9 +1,13 @@
-doctype html
 
-html
-  head
-    link(rel="stylesheet" href="../libs/font-awesome.scss")
-    link(rel="stylesheet" href="../scss/main.scss")
+extends ./_template.jade
+
+block title
+  title Relatives
+
+block content
+  
+  include ./_HeaderButton.jade
+
   body
     form.family-info
       - let famArray = [ [ [ "first-family"] , ["First Relative"] ]  , [ [ "second-family" ], [ "Second Relative" ] ] ];

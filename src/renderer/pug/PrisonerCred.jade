@@ -1,9 +1,14 @@
-doctype html
 
-html
-  head
-    link(rel="stylesheet" href="../libs/font-awesome.scss")
-    link(rel="stylesheet" href="../scss/main.scss")
+
+extends ./_template.jade
+
+block title
+  title Add Warder
+
+block content
+
+  include ./_HeaderButton.jade
+
   body
     form.info
         div.picture
