@@ -1,4 +1,10 @@
 
+.add-prisoner_ {
+    position: relative;
+    top: 50px;
+    box-shadow: 1px 1px 1px darken($color-var,20%);
+}
+
 .cell-mates {
     float: right;
     display: flex;
