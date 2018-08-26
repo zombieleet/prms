@@ -6,8 +6,8 @@
     "productName": "Prison Management System",
     "scripts": {
         "start": "export NODE_ENV=development ; electron .",
-        "package::linux": "export NODE_ENV=production ; electron-packager . --platform=linux --icon ./src/main/images/logo.png",
-        "package::window": "export NODE_ENV=production ; electron-packager . --platform=win32 --icon ./src/main/images/logo.png",
+        "package::linux": "export NODE_ENV=production ; electron-packager . --overwrite --platform=linux --icon ./src/main/images/logo.png",
+        "package::window": "export NODE_ENV=production ; electron-packager . --overwrite --platform=win32 --icon ./src/main/images/logo.png",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
