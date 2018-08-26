@@ -5,9 +5,10 @@ block title
   title Add Prisoner
   
 block content
+
   include ./_HeaderButton.jade
-  webview(id="prisoner-registration" webPreferences="nodeIntegrationInWorker" nodeIntegration)
-      
-  div.cell-mates
   
+  div.add-prisoner_
+    webview(id="prisoner-registration" webPreferences="nodeIntegrationInWorker" nodeIntegration)
+    div.cell-mates
   script(src="../js/AddPrisoner.js")
