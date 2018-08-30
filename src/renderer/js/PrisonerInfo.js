@@ -1,9 +1,9 @@
 ;( () => {
 
     "use strict";
-    
+
     require("../js/util.js").colorMode();
-    
+
     const { remote: { dialog, getCurrentWindow } } = require("electron");
     const prisoner = require("../js/Prisoner.js");
 
@@ -85,7 +85,7 @@
                 return ;
             });
 
-            return; 
+            return;
         }
 
         let [ , date, month ] = reverseString(info.dateOfConviction).match(/([0-9]{2})-([0-9]{2})/);
@@ -96,9 +96,9 @@
         const CURRENT_DATE = CURRENT.getDate();
         const CURRENT_YEAR = CURRENT.getFullYear();
 
-        date = Number(date.replace(/^0/,""));
-        month = Number(month.replace(/^0/, ""));
-        
+        date = parseInt(date);
+        month = parseInt(month);
+
         if ( date === CURRENT_DATE && month === CURRENT_MONTH && info.dischargeDate === CURRENT_YEAR ) {
             dischargeBtn.disabled = false;
             return ;
