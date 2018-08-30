@@ -6,8 +6,8 @@
     "productName": "Prison Management System",
     "scripts": {
         "start": "export NODE_ENV=development ; electron .",
-        "package::linux": "export NODE_ENV=production ; ./node_modules/.bin/electron-packager . --overwrite --platform=linux --icon src/main/images/logo.png",
-        "package::window": "export NODE_ENV=production ; sudo ./node_modules/.bin/electron-packager . --overwrite --platform=win32 --arch=ia32 --version-string.ProductName='Prison Management System' --executable-name prms --icon=src/main/images/logo.ico --asar=true --out=release-builds",
+        "package::linux": "export NODE_ENV=production ; ./node_modules/.bin/electron-packager . --overwrite --platform=linux --icon src/main/images/logo.png --executable-name prms --asar --out dist",
+        "package::window": "export NODE_ENV=production ; sudo ./node_modules/.bin/electron-packager . --overwrite --platform=win32 --arch=ia32 --version-string.ProductName 'Prison Management System' --executable-name prms --icon=src/main/images/logo.ico --asar --out dist",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
@@ -17,7 +17,9 @@
         "devtron": "^1.4.0",
         "electron": "^1.8.7",
         "electron-builder": "^20.28.3",
-        "electron-packager": "^12.1.1"
+        "electron-installer-windows": "^1.1.0",
+        "electron-packager": "^12.1.1",
+        "electron-winstaller": "^2.6.4"
     },
     "dependencies": {
         "electron-compile": "^6.4.3",
