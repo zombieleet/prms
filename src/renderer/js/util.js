@@ -11,7 +11,7 @@ if ( isWorker !== "WorkerLocation" ) {
     ({ ipcRenderer: ipc, remote: { app, dialog, getCurrentWindow } } = require("electron"));
 
     const { webContents } = getCurrentWindow();
-
+    
     ipc.on("prms::home", () => {
         webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/index.jade`);
     });
@@ -265,10 +265,14 @@ module.exports.xhrRequest = data => {
 };
 
 module.exports.colorMode = () => {
-    if ( ! localStorage.getItem("color-mode") || localStorage.getItem("color-mode") === "dark" )
-        return localStorage.setItem("color-mode", "dark");
-    if ( localStorage.getItem("color-mode") === "white")
-        return document.body.setAttribute("data-color-mode", "white");
+    
+    if ( localStorage.getItem("color-mode") === "white" ) {
+        document.body.setAttribute("data-color-mode", "white");
+        return;
+    }
+
+    document.body.setAttribute("data-color-mode", "dark");
+    
 };
 
 module.exports.loadingDocument = evt => {

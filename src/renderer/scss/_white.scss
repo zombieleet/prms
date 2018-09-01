@@ -23,4 +23,7 @@ body[data-color-mode=white] {
         border: 1px solid black;
         border-radius: 5px;
     }
+    .prisoner-item {
+        box-shadow: 0px 0px 3px darken(white,50%);
+    }
 }

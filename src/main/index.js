@@ -1,4 +1,4 @@
-const { dialog, app, BrowserWindow, nativeImage } = require("electron");
+const { dialog, app, BrowserWindow, globalShortcut, nativeImage } = require("electron");
 
 const electronCompile = require("electron-compile");
 const { enableLiveReload } = electronCompile;
@@ -64,12 +64,12 @@ app.on("ready", () => {
             mode: "bottom"
         });
     }
-
+    
     win.maximize();
 
     app.setName("Prison Management System");
     app.setVersion("1.0");
-
+    
 });
 
 app.on("will-quit", () => {

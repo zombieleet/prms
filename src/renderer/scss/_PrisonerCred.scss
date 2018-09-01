@@ -3,8 +3,8 @@ form {
     padding: 50px;
     display: flex;
     flex-direction: column;
-    height: 700px;
-    overflow-y: auto;
+    height: 600px;
+    overflow-y: scroll;
     width: 86%;
     color: $color-var;
     > div {

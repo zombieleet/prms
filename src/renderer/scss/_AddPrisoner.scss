@@ -12,8 +12,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 1000px;
+    height: 700px;
     width: 25%;
+    position: relative;
+    top: -60px;
+    ul {
+        width: 100%;
+        padding: 12px;
+        
+        li {
+            display: inline-block;
+            p {
+                text-align: center;
+            }
+        }
+    }
 }
 
 

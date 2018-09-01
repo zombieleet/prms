@@ -163,8 +163,9 @@
         const cellNumber = target.valueAsNumber;
         const activeType = document.querySelector(".active");
 
-        activeType.classList.remove("active");
-
+        if ( activeType )
+            activeType.classList.remove("active");
+        
         if ( isNaN(cellNumber) && target.value.length > 0 ) {
             dialog.showErrorBox("unexpected error", "Contact the system administrator if you see this error box");
             return ;

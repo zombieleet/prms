@@ -1,7 +1,7 @@
 ; ( () => {
     "use strict";
-
-    const { remote: { getCurrentWindow } } = require("electron");
+    
+    const { remote: { getCurrentWindow, session } } = require("electron");
     const { webContents } = getCurrentWindow();
 
     const goBack = document.querySelector("[data-history-dir=go-back]");
@@ -14,7 +14,9 @@
 
     const changeMode = () => {
         
-        if ( localStorage.getItem("color-mode") === "dark" ) {
+        const itemValue = localStorage.getItem("color-mode");
+        
+        if ( ! itemValue || itemValue === "dark" ) {
             changeColor.classList.remove("fa-toggle-on");
             changeColor.classList.add("fa-toggle-off");
             document.body.setAttribute("data-color-mode", "white");
@@ -42,9 +44,15 @@
             goFront.setAttribute("data-no-history", "yes");
         else
             goFront.setAttribute("data-no-history","no");
-
-        changeMode();
-
+        
+        if ( localStorage.getItem("data-color-mode") === "white" ) {
+            changeColor.classList.remove("fa-toggle-off");
+            changeColor.classList.add("fa-toggle-on");
+        } else {
+            changeColor.classList.remove("fa-toggle-on");
+            changeColor.classList.add("fa-toggle-off");
+        }
+        
     });
 
     changeColor.addEventListener("click", changeMode);

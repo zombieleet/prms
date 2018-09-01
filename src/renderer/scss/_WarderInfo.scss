@@ -6,18 +6,13 @@
 .warder {
     position: relative;
     top: 50px;
-    height: 850px;
+    height: 751px;
     padding-bottom: 20px;
     color: $color-var;
+    overflow-y: scroll;
 }
 
 .warder-info {
-    //height: inherit;
-    /* display: flex;
-       flex-direction: column;
-       justify-content: center;
-       align-items: center; */
-    //justify-content: center;
     padding: 100px;
     padding-left: 550px;
     img {

@@ -38,6 +38,9 @@
 .visitors {
     position: relative;
     top: 50px;
+    overflow-y: auto;
+    height: 590px;
+    padding-bottom: 30px;
     .visitor-noexists {
         @extend .warder-noexist;
         margin-top: initial;

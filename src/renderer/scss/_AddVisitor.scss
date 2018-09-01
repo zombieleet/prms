@@ -1,20 +1,29 @@
 
 .add-visitor {
     position: relative;
-    top: 50px;
+    top: 70px;
     margin-left: 7%;
     width: 97%;
-
+    padding-bottom: 50px;
+    .add-visitor-form {
+        height: 565px !important;
+    }
+    
     .visitor-prisoner-name {
         p {
             margin-bottom: 30px;
         }
     }
 
+
+    div.button {
+        margin-top: 5px !important;
+    }
+
     .visitor-relate {
         margin-top: 50px;
     }
-
+    
 
     .prisoner-suggestions {
         width: 100%;
