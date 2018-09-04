@@ -32,7 +32,9 @@ module.exports = new(class Prisoner extends DB {
 
         return new Promise( ( resolve, reject ) => {
 
-            cellMate.findOne( { filledUp: false, cellNumber: Math.floor(Math.random(300) * 300) }, ( err , { cellNumber } ) => {
+            const cellNumber = Math.floor(Math.random(300) * 300);
+            
+            cellMate.findOne( { filledUp: false, cellNumber }, ( err , { cellNumber } ) => {
 
                 if ( err ) {
                     reject(err);

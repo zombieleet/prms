@@ -44,7 +44,14 @@
 
         const cellMateEl = document.querySelector(".cell-mates");
 
-        const { inMate , cellNumber } = await prisoner.getCellMate();
+        let inMate, cellNumber ;
+
+        try {
+            ( { inMate, cellNumber } = await prisoner.getCellMate() );
+        } catch(ex) {
+            inMate = [];
+            cellNumber = Math.floor(Math.random(300) * 300);
+        }
 
         if ( cellMateEl.childElementCount >= 1 ) {
             Array.from(cellMateEl.children, el => el.remove());
