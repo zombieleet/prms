@@ -1,3 +1,7 @@
+
+require("./util.js").handleSquirrel();
+require("electron-squirrel-startup");
+
 const { dialog, app, BrowserWindow, globalShortcut, nativeImage } = require("electron");
 
 const electronCompile = require("electron-compile");
@@ -6,7 +10,6 @@ const { enableLiveReload } = electronCompile;
 const appRoot = app.getAppPath();
 
 const path = require("path");
-
 
 if ( process.env.NODE_ENV === "development" )
     require("electron-reload")(appRoot, {
@@ -71,6 +74,7 @@ app.on("ready", () => {
     app.setVersion("1.0");
     
 });
+
 
 app.on("will-quit", () => {
     app.quit();

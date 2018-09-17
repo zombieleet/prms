@@ -5,9 +5,9 @@
     "main": "./src/main/index.js",
     "productName": "Prison Management System",
     "scripts": {
-        "start": "export NODE_ENV=development ; electron .",
-        "package::linux": "export NODE_ENV=production ; ./node_modules/.bin/electron-packager . --overwrite --platform=linux --icon src/main/images/logo.png --executable-name prms --asar --out dist",
-        "package::window": "export NODE_ENV=production ; sudo ./node_modules/.bin/electron-packager . --overwrite --platform=win32 --arch=ia32 --version-string.ProductName 'Prison Management System' --executable-name prms --icon=src/main/images/logo.ico --asar --out dist",
+        "start": "./node_modules/.bin/electron .",
+        "package::linux": "./node_modules/.bin/electron-packager . --overwrite --platform=linux --icon src/main/images/logo.png --executable-name prms --asar --out dist",
+        "package::window": "./node_modules/.bin/electron-packager . --overwrite --platform=win32 --arch=ia32 --version-string.ProductName 'Prison Management System' --executable-name prms --icon=src/main/images/logo.ico --asar --out dist",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
@@ -25,6 +25,7 @@
         "electron-compile": "^6.4.3",
         "electron-prebuilt-compile": "^2.0.3",
         "electron-reload": "^1.2.5",
+        "electron-squirrel-startup": "^1.0.0",
         "nedb": "^1.8.0"
     }
 }

@@ -9,8 +9,9 @@ const setupConfig = () => {
         description: "prison management system, is a software created in partial completion of the 4 years programmed required by law for every computer science student in Nigera. This software eases the pain in keeping prison records",
         noMsi: true,
         outputDirectory: path.join(output, "windows-installer"),
-        exe: 'prms.exe',
-        setupExe: 'prms.exe',
+        exe: "prms.exe",
+        setupExe: "prms.exe",
+        setupMsi: "prison_management_system",
         setupIcon: path.join("./", "src", "main", "images", 'logo.ico')
     })
 };
