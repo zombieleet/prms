@@ -1,0 +1,49 @@
+
+extends ./_template.pug
+
+block title
+  title Relatives
+
+block content
+
+  body
+    form.family-info
+      - let famArray = [ [ [ "first-family"] , ["First Relative"] ]  , [ [ "second-family" ], [ "Second Relative" ] ] ];
+      
+      each fam in famArray
+        div(id=fam[0] class="fam-info")
+          p= fam[1]
+          div.name
+            label 
+              span First Name
+              input(required type="text" class="first-name" data-db="fName")
+            label
+              span Last Name
+              input(required type="text" class="last-name" data-db="lName")
+
+          div.address
+            label
+              span Address
+              input(required type="text" class="address" data-db="address")
+
+          div.nature-of-relation
+            label
+              span Nature of Relationship
+              input(required list="natureList" data-db="relationship")
+              datalist(id="natureList")
+                option(value="Father")
+                option(value="Mother")
+                option(value="Sibling")
+                option(value="Wife")
+                option(value="Husband")
+                option(value="Friend")
+                option(value="Fiance`")
+                option(value="Fiancee`")
+
+      div.button
+        button(type="submit" data-src-prev="PrisonerCred.pug" class="prev-view") Back
+        button(type="cancel") Reset
+        button(type="sumbit" class="save") Save
+
+
+    script(src="../js/FamilyCred.js")
