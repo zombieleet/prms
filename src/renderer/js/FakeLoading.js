@@ -43,7 +43,7 @@
 
             const { webContents } = getCurrentWindow();
             webContents.clearHistory();
-            webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/index.jade`);
+            webContents.loadURL(`file://${app.getAppPath()}/src/renderer/html/index.html`);
         });
 
 

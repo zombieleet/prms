@@ -1,6 +1,13 @@
 body {
     font-family: $font-family;
     -webkit-user-select: none;
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/prison_2.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: darken;
 }
 
 ::-webkit-scrollbar {

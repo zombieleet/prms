@@ -112,7 +112,7 @@
         
         if ( target.classList.contains("show-prisoner") ) {
             localStorage.setItem("PRISONER_ID", target.parentNode.getAttribute("data-prisoner-id"));
-            getCurrentWindow().loadURL(`file://${app.getAppPath()}/src/renderer/pug/PrisonerInfo.jade`);
+            getCurrentWindow().loadURL(`file://${app.getAppPath()}/src/renderer/html/PrisonerInfo.html`);
             return;
         }
     });

@@ -20,12 +20,12 @@
             justify-content: center;
             align-items: center;
             height: 100px;
+            background-color: darken(yellow,20%);
             cursor: pointer;
-            color: $color-var;
             box-shadow: 0px 0px 8px -2px $color-var;
+            color: $color-var;
             &:hover {
-                background: $color-var;
-                color: darken(white,20%);
+                background: darken(yellow,25%);
             }
         }
         

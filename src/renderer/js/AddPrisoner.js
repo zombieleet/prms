@@ -23,7 +23,7 @@
         console.log("loading stop");
     });
 
-    webview.src=`file://${app.getAppPath()}/src/renderer/pug/PrisonerCred.jade`;
+    webview.src=`file://${app.getAppPath()}/src/renderer/html/PrisonerCred.html`;
 
     document.addEventListener("DOMContentLoaded", async () => {
 

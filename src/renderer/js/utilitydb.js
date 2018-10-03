@@ -6,15 +6,15 @@ const { webContents } = getCurrentWindow();
 module.exports = {
 
     addRecordView(filename) {
-        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/${filename}.jade`);
+        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/html/${filename}.html`);
     },
     
     viewRecordView(filename) {
-        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/${filename}.jade`);
+        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/html/${filename}.html`);
     },
     
     deleteRecordView(filename) {
-        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/${filename}.jade`);
+        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/html/${filename}.html`);
     },
     
     async saveRecord(data) {

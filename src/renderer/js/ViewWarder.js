@@ -79,7 +79,7 @@
 
         if ( attrib === "view" ) {
             localStorage.setItem("WARDER_ID", targetPNode.getAttribute("data-warder-id") );
-            getCurrentWindow().loadURL(`file://${app.getAppPath()}/src/renderer/pug/WarderInfo.jade`);
+            getCurrentWindow().loadURL(`file://${app.getAppPath()}/src/renderer/html/WarderInfo.html`);
             return ;
         }
 

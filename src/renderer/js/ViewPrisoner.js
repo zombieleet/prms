@@ -15,7 +15,7 @@
         const { target } = evt;
         const prisonerId = target.parentNode.getAttribute("data-prisoner-id");
         localStorage.setItem("PRISONER_ID", prisonerId);
-        getCurrentWindow().loadURL(`file://${app.getAppPath()}/src/renderer/pug/PrisonerInfo.jade`);
+        getCurrentWindow().loadURL(`file://${app.getAppPath()}/src/renderer/html/PrisonerInfo.html`);
     };
 
     const setActiveClicked = target => {

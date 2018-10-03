@@ -13,7 +13,7 @@ if ( isWorker !== "WorkerLocation" ) {
     const { webContents } = getCurrentWindow();
     
     ipc.on("prms::home", () => {
-        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/pug/index.jade`);
+        webContents.loadURL(`file://${app.getAppPath()}/src/renderer/html/index.html`);
     });
 
     ipc.on("prms::add:prisoner", () => {
@@ -136,14 +136,14 @@ module.exports.initWebViewListener = () => {
                 if ( webview.canGoForward() )
                     webview.goForward();
                 else
-                    webview.loadURL(`file://${app.getAppPath()}/src/renderer/pug/${view}`);
+                    webview.loadURL(`file://${app.getAppPath()}/src/renderer/html/${view}`);
                 return ;
             }
             if ( moveTo === "prev" ) {
                 if ( webview.canGoBack() )
                     webview.goBack();
                 else
-                    webview.loadURL(`file://${app.getAppPath()}/src/renderer/pug/${view}`);
+                    webview.loadURL(`file://${app.getAppPath()}/src/renderer/html/${view}`);
                 return;
             }
         }

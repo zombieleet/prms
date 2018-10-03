@@ -4,11 +4,7 @@ require("electron-squirrel-startup");
 
 const { dialog, app, BrowserWindow, globalShortcut, nativeImage } = require("electron");
 
-const electronCompile = require("electron-compile");
-const { enableLiveReload } = electronCompile;
-
 const appRoot = app.getAppPath();
-
 const path = require("path");
 
 if ( process.env.NODE_ENV === "development" )
@@ -39,8 +35,6 @@ cellCollection.count({}, ( err, count ) => {
     }
 });
 
-electronCompile.init(appRoot, require.resolve("./index.js"));
-
 app.on("ready", () => {
 
     require("./menu.js")();
@@ -55,7 +49,7 @@ app.on("ready", () => {
         }
     });
 
-    win.loadURL(`file://${appRoot}/src/renderer/pug/loading.jade`);
+    win.loadURL(`file://${appRoot}/src/renderer/html/loading.html`);
 
     win.on("close", () => {
         win = undefined;
