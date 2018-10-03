@@ -6,6 +6,7 @@
     "productName": "Prison Management System",
     "scripts": {
         "start": "./node_modules/.bin/electron .",
+        "watch": "gulp",
         "package::linux": "./node_modules/.bin/electron-packager . --overwrite --platform=linux --icon src/main/images/logo.png --executable-name prms --asar --out dist",
         "package::window": "./node_modules/.bin/electron-packager . --overwrite --platform=win32 --arch=ia32 --version-string.ProductName 'Prison Management System' --executable-name prms --icon=src/main/images/logo.ico --asar --out dist",
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,11 +20,13 @@
         "electron-builder": "^20.28.3",
         "electron-installer-windows": "^1.1.0",
         "electron-packager": "^12.1.1",
-        "electron-winstaller": "^2.6.4"
+        "electron-winstaller": "^2.6.4",
+        "gulp": "^3.9.1",
+        "gulp-pug": "^4.0.1",
+        "gulp-sass": "^4.0.1"
     },
     "dependencies": {
         "electron-compile": "^6.4.3",
-        "electron-prebuilt-compile": "^2.0.3",
         "electron-reload": "^1.2.5",
         "electron-squirrel-startup": "^1.0.0",
         "nedb": "^1.8.0"
