@@ -11,7 +11,7 @@ gulp.task("sass", () => {
 gulp.task("pug", () => {
 	return gulp.src("./src/renderer/pug/*.pug")
 		.pipe(gulpPug({}))
-		.pipe(gulp.dest("./src/renderer/pug/"));
+		.pipe(gulp.dest("./src/renderer/html/"));
 });
 
 
