@@ -7,8 +7,11 @@
     "scripts": {
         "start": "./node_modules/.bin/electron .",
         "watch": "gulp",
-        "package::linux": "./node_modules/.bin/electron-packager . --overwrite --platform=linux --icon src/main/images/logo.png --executable-name prms --asar --out dist",
-        "package::window": "./node_modules/.bin/electron-packager . --overwrite --platform=win32 --arch=ia32 --version-string.ProductName 'Prison Management System' --executable-name prms --icon=src/main/images/logo.ico --asar --out dist",
+        "package::linux": "./node_modules/.bin/electron-packager . --overwrite --platform=linux --icon 
+src/main/images/logo.png --executable-name prms --asar --out dist --ignore=src/renderer/pug/ --ignore=src/renderer/scss/",
+        "package::window": "./node_modules/.bin/electron-packager . --overwrite --platform=win32 --arch=ia32 
+--version-string.ProductName 'Prison Management System' --executable-name prms --icon=src/main/images/logo.ico --asar --out 
+dist --ignore=src/renderer/pu/ --ignore=src/renderer/scss/",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
