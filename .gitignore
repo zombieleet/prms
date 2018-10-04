@@ -1,3 +1,5 @@
 node_modules/
 dist/
 Prison Management System-linux-x64/
+src/renderer/html/
+src/renderer/css/
