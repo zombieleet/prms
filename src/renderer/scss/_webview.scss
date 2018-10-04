@@ -1,6 +1,8 @@
 webview {
-    height: 800px;
+    height: 1000px;
     width: 50%;
     float: left;
+    background-image: unset;
+    box-shadow: 2px 2px 2px 2px darken($color-var, 20%);
     //overflow-y: scroll;
 }
