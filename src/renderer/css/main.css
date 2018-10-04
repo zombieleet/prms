@@ -1,0 +1,747 @@
+*:focus {
+  outline: none; }
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4,
+h5, h6, p, blockquote, pre, a, abbr, acronym, address, big,
+cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small,
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd,
+ol, ul, li, fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+details, embed, figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary, time, mark, audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+a {
+  text-decoration: none;
+  color: black; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer,
+header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.generate-room-number, div.button button, .picture-capture, .prisoner-delete, .warder-list .warder-item button, .view-visitor-list .view-visitor-item .delete-visitor, .prisoner-info .info .btn-states button, .buttons > button {
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  width: 100px;
+  border-radius: 15px;
+  margin-left: 30px; }
+  .generate-room-number:hover, div.button button:hover, .picture-capture:hover, .prisoner-delete:hover, .warder-list .warder-item button:hover, .view-visitor-list .view-visitor-item .delete-visitor:hover, .prisoner-info .info .btn-states button:hover, .buttons > button:hover {
+    background: #333333; }
+  .generate-room-number:disabled, div.button button:disabled, .picture-capture:disabled, .prisoner-delete:disabled, .warder-list .warder-item button:disabled, .view-visitor-list .view-visitor-item .delete-visitor:disabled, .prisoner-info .info .btn-states button:disabled, .buttons > button:disabled {
+    cursor: not-allowed; }
+
+body {
+  font-family: system-ui;
+  -webkit-user-select: none;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/prison_2.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: darken;
+  font-weight: bolder; }
+
+::-webkit-scrollbar {
+  width: 7px;
+  cursor: pointer; }
+
+::-webkit-scrollbar-track {
+  background: black; }
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 50%; }
+
+::-webkit-scrollbar-button {
+  background-color: #666666; }
+
+body {
+  overflow-y: hidden;
+  overflow-x: hidden; }
+
+.fake-loading {
+  display: flex;
+  height: 700px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black; }
+  .fake-loading .fake-load-id span {
+    position: relative;
+    color: black;
+    font-size: 50px;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: reverse; }
+    .fake-loading .fake-load-id span:not(:first-of-type) {
+      margin-left: 12px; }
+  .fake-loading .fake-load-id [data-load-id="1"] {
+    animation-name: data-load-anim-1;
+    animation-duration: 1s;
+    animation-delay: 2s; }
+  .fake-loading .fake-load-id [data-load-id="2"] {
+    animation-name: data-load-anim-2;
+    animation-duration: 2s;
+    animation-delay: 4s; }
+  .fake-loading .fake-load-id [data-load-id="3"] {
+    animation-name: data-load-anim-3;
+    animation-duration: 3s;
+    animation-delay: 6s; }
+  .fake-loading .fake-load-id [data-load-id="4"] {
+    animation-name: data-load-anim-4;
+    animation-duration: 4s;
+    animation-delay: 8s; }
+
+@keyframes data-load-anim-1 {
+  from {
+    left: -20px; }
+  to {
+    left: -50px;
+    opacity: 0; }
+  /* @for $i from 0 through 100 { */
+  /*     1% { */
+  /*         left: -1px; */
+  /*     } */
+  /* } */ }
+
+@keyframes data-load-anim-2 {
+  from {
+    left: -20px; }
+  to {
+    left: -50px;
+    opacity: 0; }
+  /* @for $i from 0 through 100 { */
+  /*     2% { */
+  /*         left: -2px; */
+  /*     } */
+  /* } */ }
+
+@keyframes data-load-anim-3 {
+  from {
+    left: -20px; }
+  to {
+    left: -50px;
+    opacity: 0; }
+  /* @for $i from 0 through 100 { */
+  /*     3% { */
+  /*         left: -3px; */
+  /*     } */
+  /* } */ }
+
+@keyframes data-load-anim-4 {
+  from {
+    left: -20px; }
+  to {
+    left: -50px;
+    opacity: 0; }
+  /* @for $i from 0 through 100 { */
+  /*     4% { */
+  /*         left: -4px; */
+  /*     } */
+  /* } */ }
+
+.prison-functions {
+  height: 790px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .prison-functions ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 520px; }
+    .prison-functions ul .prison-func-item {
+      width: 150px;
+      margin-left: 3%;
+      margin-top: 30px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      background-color: #999900;
+      cursor: pointer;
+      box-shadow: 0px 0px 8px -2px black;
+      color: black; }
+      .prison-functions ul .prison-func-item:hover {
+        background: olive; }
+    .prison-functions ul:not(:first-of-type) {
+      border-top: 2px solid black;
+      margin-top: 0; }
+
+.header {
+  margin-top: 12px;
+  position: fixed;
+  width: 100%; }
+  .header span {
+    margin-left: 20px;
+    width: 10%;
+    padding-top: 12px;
+    color: #3b3b3b;
+    cursor: pointer; }
+    .header span.history i:last-of-type {
+      margin-left: 12px; }
+    .header span:fist-of-type {
+      float: left; }
+    .header span:last-of-type {
+      float: right;
+      margin-right: 20px;
+      text-align: right;
+      padding-top: 0; }
+    .header span i:hover {
+      color: white; }
+
+[data-no-history=yes] {
+  cursor: not-allowed; }
+  [data-no-history=yes]:hover {
+    color: #3b3b3b !important; }
+
+.add-prisoner_ {
+  position: relative;
+  top: 50px;
+  box-shadow: 1px 1px 1px black; }
+
+.cell-mates {
+  float: right;
+  display: flex;
+  margin-right: 150px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+  width: 25%;
+  position: relative;
+  top: -60px; }
+  .cell-mates ul {
+    width: 100%;
+    padding: 12px; }
+    .cell-mates ul li {
+      display: inline-block; }
+      .cell-mates ul li p {
+        text-align: center; }
+
+.no-cell-mate {
+  font-size: 1.5em;
+  margin-top: -200px;
+  color: black;
+  text-align: center;
+  line-height: 1.8; }
+
+form {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  overflow-y: scroll;
+  width: 86%;
+  color: black; }
+  form > div {
+    margin-top: 30px; }
+
+.picture {
+  margin-top: 50px;
+  margin-bottom: 30px; }
+  .picture .preview-picture {
+    background: black;
+    width: 199px;
+    height: 148px;
+    display: inline-block;
+    justify-content: center;
+    margin: 1px auto auto 1px;
+    vertical-align: top; }
+    .picture .preview-picture p {
+      font-size: 1.5em;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: .1;
+      cursor: pointer;
+      height: 100%;
+      color: black; }
+
+input {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 13px;
+  padding: 10px; }
+
+div.name label {
+  display: inline-block; }
+  div.name label:last-of-type {
+    margin-left: 30px; }
+
+div.family label {
+  display: inline-block; }
+  div.family label select {
+    margin-left: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 12px; }
+  div.family label:last-of-type {
+    margin-left: 50px; }
+
+input[type="number"] {
+  width: 190px; }
+
+div.button {
+  margin-top: 70px;
+  padding-bottom: 20px; }
+  div.button button:first-of-type {
+    margin-left: initial; }
+
+.fam-info {
+  margin-top: 15px;
+  padding-top: 15px;
+  padding-left: 15px; }
+  .fam-info p {
+    margin-bottom: 13px;
+    text-decoration: underline; }
+  .fam-info:first-of-type {
+    border-bottom: 2px solid black; }
+  .fam-info:hover {
+    background: black;
+    box-shadow: 0 0 7px 1px #333333;
+    color: black; }
+
+.picture-video {
+  position: relative;
+  width: 198px;
+  height: inherit; }
+
+.picture-capture {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 10px; }
+
+.hide {
+  display: none !important; }
+
+.prisoners {
+  background: black;
+  position: relative;
+  top: 80px;
+  float: left;
+  padding: 12px;
+  width: 20%;
+  height: 100%;
+  color: black; }
+  .prisoners .prisoners-section {
+    padding: 12px;
+    padding-top: initial; }
+    .prisoners .prisoners-section .prisoner-section-list {
+      margin-top: 20px;
+      background: black;
+      padding: 12px;
+      cursor: pointer;
+      width: 85%; }
+      .prisoners .prisoners-section .prisoner-section-list:hover {
+        background: black; }
+        .prisoners .prisoners-section .prisoner-section-list:hover [data-type] {
+          color: black; }
+
+.prisoner-list {
+  float: right;
+  margin-top: 88px;
+  margin-right: 20px;
+  padding: 12px;
+  height: 600px;
+  overflow-y: auto;
+  width: 70%; }
+
+.active {
+  background: black !important; }
+  .active [data-type] {
+    color: black !important; }
+
+[data-not-available] {
+  color: black;
+  text-align: center;
+  font-size: 1.5em; }
+
+.prisoner-list-item {
+  padding-right: 25px; }
+
+.prisoner-item {
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 20px;
+  box-shadow: 1px 1px 1px;
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
+  margin-left: 12px; }
+
+.prisoner-view-full {
+  cursor: pointer;
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  color: black; }
+  .prisoner-view-full:hover {
+    text-decoration: underline;
+    color: black; }
+
+.prisoner-delete, .warder-list .warder-item button, .view-visitor-list .view-visitor-item .delete-visitor {
+  display: flex;
+  margin: auto;
+  margin-top: 39px;
+  padding: 5px;
+  width: 50px;
+  border-radius: 5px;
+  background: #660000;
+  color: white; }
+
+.prisoner-front-view-image {
+  width: 100%; }
+
+.prisoner-search {
+  display: inline-flex;
+  width: 80% !important;
+  vertical-align: super;
+  margin-left: 15px; }
+
+.prisoner-search-icon {
+  margin-left: 5px;
+  cursor: pointer; }
+  .prisoner-search-icon:hover {
+    color: #1f1f1f; }
+
+.prisoner-identify-static {
+  text-align: center;
+  margin-left: 18px; }
+
+.prisoner-info {
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+  position: relative;
+  top: 150px;
+  height: 1000px;
+  overflow-y: auto; }
+  .prisoner-info .info {
+    padding: 15px; }
+    .prisoner-info .info .prisoner-images img:not(:first-of-type) {
+      margin-left: 12px; }
+    .prisoner-info .info .btn-states {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px; }
+      .prisoner-info .info .btn-states button:not(:first-of-type) {
+        margin-left: 12px; }
+  .prisoner-info .prisoner-user-info,
+  .prisoner-info .prisoner-family-info,
+  .prisoner-info .prisoner-prison-info {
+    margin-top: 50px;
+    line-height: 2; }
+    .prisoner-info .prisoner-user-info p,
+    .prisoner-info .prisoner-family-info p,
+    .prisoner-info .prisoner-prison-info p {
+      color: #1f1f1f;
+      margin-left: 50px; }
+  .prisoner-info .prisoner-user-info:before {
+    content: "Prisoner Information:";
+    font-size: 1.5em;
+    text-decoration: underline;
+    color: black; }
+  .prisoner-info .prisoner-family-info > div:last-of-type {
+    margin-top: 30px; }
+  .prisoner-info .prisoner-family-info:before {
+    content: "Prisoner Relative Information:";
+    font-size: 1.5em;
+    text-decoration: underline;
+    color: black; }
+  .prisoner-info .prisoner-prison-info {
+    padding-bottom: 500px; }
+    .prisoner-info .prisoner-prison-info:before {
+      content: "Prison Information:";
+      font-size: 1.5em;
+      text-decoration: underline;
+      color: black; }
+
+div.add-warder {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 50px; }
+
+form.warder {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 500px;
+  width: 100%;
+  padding-bottom: 190px; }
+
+.add-warder-picture .add-warder-picture-preview {
+  background-color: black;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  width: 199px;
+  height: 148px; }
+  .add-warder-picture .add-warder-picture-preview p {
+    font-size: 1.5em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    opacity: .1;
+    color: black;
+    cursor: pointer; }
+
+.add-warder-name label {
+  display: inline-block; }
+  .add-warder-name label:last-of-type {
+    margin-left: 20px; }
+
+.add-warder-address label textarea {
+  display: block;
+  margin: 0px;
+  margin-top: 12px;
+  width: 399px;
+  height: 41px;
+  resize: none;
+  border-radius: 12px;
+  padding-top: 10px;
+  padding-left: 10px; }
+
+.buttons > button:first-of-type {
+  margin-left: -2px; }
+
+.hide {
+  display: none; }
+
+.preview-warder-picture {
+  height: inherit;
+  width: inherit; }
+
+.close-preview {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -154px;
+  margin-left: 205px;
+  font-size: xx-large;
+  cursor: pointer;
+  color: black; }
+  .close-preview:hover {
+    color: #333333; }
+
+.warders {
+  position: relative;
+  top: 50px;
+  height: 100%;
+  overflow-y: auto;
+  padding: 12px;
+  padding-bottom: 30px;
+  color: black; }
+
+.warder-list {
+  padding: 15px;
+  box-shadow: 0px 0px 8px -1px black;
+  width: 869px;
+  margin-left: 197px;
+  height: 700px;
+  padding-bottom: 8px;
+  overflow-y: auto; }
+  .warder-list .warder-item {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    width: 250px;
+    padding: 10px;
+    margin-top: 20px;
+    box-shadow: 1px 1px 1px;
+    vertical-align: top; }
+    .warder-list .warder-item:not(:first-of-type) {
+      margin-left: 12px; }
+    .warder-list .warder-item img {
+      width: 79%;
+      height: 70%;
+      vertical-align: top; }
+    .warder-list .warder-item a {
+      line-height: 2; }
+      .warder-list .warder-item a:hover {
+        text-decoration: underline;
+        cursor: pointer; }
+    .warder-list .warder-item button {
+      margin-top: initial; }
+
+.warder-noexist, .visitors .visitor-noexists {
+  font-size: 1.5em;
+  text-align: center;
+  color: black;
+  margin-top: 50px; }
+
+.warder {
+  position: relative;
+  top: 50px;
+  height: 751px;
+  padding-bottom: 20px;
+  color: black;
+  overflow-y: scroll; }
+
+.warder-info {
+  padding: 100px;
+  padding-left: 550px; }
+  .warder-info img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; }
+  .warder-info .info-div {
+    margin-left: -20px; }
+    .warder-info .info-div p {
+      font-size: 1.2em;
+      line-height: 3; }
+      .warder-info .info-div p:first-of-type {
+        margin-top: 20px; }
+  .warder-info .warder-name:before {
+    content: "Name:  ";
+    color: black; }
+  .warder-info .warder-address:before {
+    content: "Address:  ";
+    color: black; }
+  .warder-info .warder-sog:before {
+    content: "State of Origin:  ";
+    color: black; }
+  .warder-info .warder-lga:before {
+    content: "Local Governemnt Area:  ";
+    color: black; }
+  .warder-info .warder-gender:before {
+    content: "Gender:  ";
+    color: black; }
+  .warder-info .warder-dob:before {
+    content: "Date of Birth:  ";
+    color: black; }
+  .warder-info .warder-emp-date:before {
+    content: "Employment Date:  ";
+    color: black; }
+  .warder-info .warder-ret-date:before {
+    content: "Retirement Date:  ";
+    color: black; }
+
+.add-visitor {
+  position: relative;
+  top: 70px;
+  margin-left: 7%;
+  width: 97%;
+  padding-bottom: 50px; }
+  .add-visitor .add-visitor-form {
+    height: 565px !important; }
+  .add-visitor .visitor-prisoner-name p {
+    margin-bottom: 30px; }
+  .add-visitor div.button {
+    margin-top: 5px !important; }
+  .add-visitor .visitor-relate {
+    margin-top: 50px; }
+  .add-visitor .prisoner-suggestions {
+    width: 100%; }
+    .add-visitor .prisoner-suggestions li {
+      display: inline-block;
+      box-shadow: 0px 0px 4px -1px black;
+      padding-bottom: 12px; }
+      .add-visitor .prisoner-suggestions li p {
+        text-align: center;
+        margin-top: 15px;
+        cursor: pointer; }
+        .add-visitor .prisoner-suggestions li p:hover {
+          text-decoration: underline; }
+      .add-visitor .prisoner-suggestions li:not(:first-of-type) {
+        margin-left: 30px; }
+
+.view-visitor {
+  position: relative;
+  top: 50px;
+  height: 860px;
+  padding-bottom: 30px; }
+
+.view-visitor-list {
+  padding-top: 50px; }
+  .view-visitor-list .view-visitor-item {
+    margin-left: 50px;
+    width: 90%;
+    box-shadow: 0px 0px 8px 0px black;
+    padding: 12px;
+    line-height: 1.5;
+    clear: right;
+    color: black; }
+    .view-visitor-list .view-visitor-item:not(:first-of-type) {
+      margin-top: 50px; }
+    .view-visitor-list .view-visitor-item .show-prisoner {
+      cursor: pointer; }
+      .view-visitor-list .view-visitor-item .show-prisoner:hover {
+        text-decoration: underline; }
+    .view-visitor-list .view-visitor-item .delete-visitor {
+      float: right;
+      margin-top: -30px; }
+
+.visitors {
+  position: relative;
+  top: 50px;
+  overflow-y: auto;
+  height: 590px;
+  padding-bottom: 30px; }
+  .visitors .visitor-noexists {
+    margin-top: initial; }
+
+body[data-color-mode=white] {
+  transition: .2s ease-in;
+  background-color: #f2f2f2; }
+  body[data-color-mode=white] .change-color i {
+    color: black; }
+  body[data-color-mode=white] input, body[data-color-mode=white] textarea {
+    transition: .5s ease-in;
+    border: 1px solid black; }
+  body[data-color-mode=white] .prisoners {
+    transition: .5s ease-in;
+    background: white; }
+  body[data-color-mode=white] .prisoner-section-list {
+    transition: .5s ease-in;
+    background: white !important;
+    border: 1px solid black;
+    border-radius: 5px; }
+  body[data-color-mode=white] .prisoner-item {
+    box-shadow: 0px 0px 3px gray; }
+
+webview {
+  height: 1000px;
+  width: 50%;
+  float: left;
+  background-image: unset;
+  box-shadow: 2px 2px 2px 2px black; }
