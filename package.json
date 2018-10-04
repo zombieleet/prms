@@ -1,6 +1,6 @@
 {
     "name": "prision",
-    "version": "1.0.0",
+    "version": "1.0.4",
     "description": "prison management system for computer science project",
     "main": "./src/main/index.js",
     "productName": "Prison Management System",
