@@ -69,7 +69,6 @@ app.on("ready", () => {
     
 });
 
-
 app.on("will-quit", () => {
     app.quit();
 });
