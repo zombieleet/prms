@@ -11,27 +11,27 @@
         const title = document.querySelector("title");
 
         const dotOne = setInterval( () => {
-            if ( title.textContent === "Loading" ) {
-                title.textContent = "Loading.";
-            }
+            // if ( title.textContent === "Loading" ) {
+            //     title.textContent = "Loading.";
+            // }
         }, 500 / 2);
 
         const dotTwo = setInterval( () => {
-            if ( title.textContent === "Loading." ) {
-                title.textContent = "Loading..";
-            }
+            // if ( title.textContent === "Loading." ) {
+            //     title.textContent = "Loading..";
+            // }
         }, 1000 / 2);
 
         const dotThree = setInterval( () => {
-            if ( title.textContent === "Loading.." ) {
-                title.textContent = "Loading...";
-            }
+            // if ( title.textContent === "Loading.." ) {
+            //     title.textContent = "Loading...";
+            // }
         }, 1500 / 2);
 
         const dotFour = setInterval( () => {
-            if ( title.textContent === "Loading..." ) {
-                title.textContent = "Loading";
-            }
+            // if ( title.textContent === "Loading..." ) {
+            //     title.textContent = "Loading";
+            // }
         }, 2000 / 2);
 
         emitStopInterval.on("prison:interval:stop", () => {
