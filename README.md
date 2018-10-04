@@ -13,6 +13,10 @@ This project is part of the fulfillment of the four (4) years programme in compu
 
 `npm install`
 
+`npm install -g gulp-cli`
+
+`gulp`
+
 `npm start`
 
 #### Installation
@@ -27,11 +31,6 @@ This project is part of the fulfillment of the four (4) years programme in compu
 Linux: `npm package::linux`
 
 Windows: `npm package::window`
-
-
-
-#### Usage
-
 
 
 #### LICENSE
