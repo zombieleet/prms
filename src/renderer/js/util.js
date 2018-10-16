@@ -266,12 +266,12 @@ module.exports.xhrRequest = data => {
 
 module.exports.colorMode = () => {
     
-    if ( localStorage.getItem("color-mode") === "white" ) {
-        document.body.setAttribute("data-color-mode", "white");
-        return;
-    }
+    // if ( localStorage.getItem("color-mode") === "white" ) {
+    //     document.body.setAttribute("data-color-mode", "white");
+    //     return;
+    // }
 
-    document.body.setAttribute("data-color-mode", "dark");
+    // document.body.setAttribute("data-color-mode", "dark");
     
 };
 
