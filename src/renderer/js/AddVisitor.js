@@ -149,4 +149,13 @@
         document.querySelector(".prisoner-suggestions").remove();
 
     });
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const timeValue = document.querySelector("[data-db=time]");
+        const dateValue = document.querySelector("[data-db=date]");
+
+        timeValue.value = (new Date()).toLocaleTimeString();
+        dateValue.value = (new Date()).toLocaleDateString();
+    });
+
 })();

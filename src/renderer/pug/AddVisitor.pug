@@ -37,7 +37,15 @@ block content
             option Male
             option Female
 
-            
+      div.visitor-time-date
+        label.time
+          span Time of Visit
+          input(type="text" data-db="time" required disabled)
+        label.date
+          span Date of Visit
+          input(type="text" data-db="date" required disabled)
+
+
       div.visitor-prisoner-name
   
         p Name of Prisoner
@@ -49,6 +57,7 @@ block content
         label.prisoner-lname
           span Last Name
           input(type="text" data-db="plname" required)
+
       
       div.visitor-relate
         
