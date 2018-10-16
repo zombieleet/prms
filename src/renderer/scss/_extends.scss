@@ -5,6 +5,8 @@
     width: 100px;
     border-radius: 15px;
     margin-left: 30px;
+    color: white;
+    background: darken(yellow,30%);
     &:hover {
         background: lighten($color-var,20%);
     }
