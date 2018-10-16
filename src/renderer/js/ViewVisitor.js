@@ -34,6 +34,8 @@
             const gender = document.createElement("p");
             const toVisit = document.createElement("p");
             const rtoVisit = document.createElement("p");
+            const timeVisit = document.createElement("p");
+            const dateVisit = document.createElement("p");
 
             const button = document.createElement("button");
 
@@ -43,6 +45,9 @@
             gender.textContent = `Gender: ${_visitor_.gender}`;
             toVisit.textContent = `Visting Prisoner Id: ${_visitor_.prisonerToVist}`;
             rtoVisit.textContent = `Reason for Visit: ${_visitor_.rtovisit}`;
+            timeVisit.textContent = `Time of Visit: ${_visitor_.time}`;
+            dateVisit.textContent = `Date of Visit: ${_visitor_.date}`;
+
             button.textContent = "Delete";
             
             toVisit.setAttribute("class", "show-prisoner");
@@ -59,6 +64,9 @@
             li.appendChild(gender);
             li.appendChild(toVisit);
             li.appendChild(rtoVisit);
+            li.appendChild(timeVisit);
+            li.appendChild(dateVisit);
+
             li.appendChild(button);
 
             ul.appendChild(li);
