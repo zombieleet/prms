@@ -1,8 +1,6 @@
 ### Prison Management System
 
-This project is part of the fulfillment of the four (4) years programme in computer science, it is currently undergoing development
-
-
+This project is part of the fulfillment of the four (4) years programme in computer science
 
 
 #### Develop
